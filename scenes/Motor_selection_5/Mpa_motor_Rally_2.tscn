@@ -1,0 +1,832 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Assets/Font/Arial/ARIBL0.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Navegacion/Salir.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Navegacion/salir_over.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Navegacion/Buttons_options_normal.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Gear_1.png" type="Texture" id=5]
+[ext_resource path="res://scenes/Motor_selection/Motor_graficos.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Motor_block.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Gear_0.png" type="Texture" id=8]
+[ext_resource path="res://scenes/Plano_information_/Plano.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Navegacion/Buttons_options_over.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/just_color.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/E_car_lado.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Gear_2.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Font/Arial/Arialn.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://scenes/Motor_selection_5/Scripts/Motor_map_seletion.gd" type="Script" id=15]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 25
+use_filter = true
+font_data = ExtResource( 14 )
+
+[sub_resource type="SphereMesh" id=4]
+radius = 8.0
+height = 16.0
+
+[sub_resource type="Animation" id=5]
+resource_name = "Engine"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Gear0:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gear1:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Gear2:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Gear0:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gear1:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Gear2:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="DynamicFont" id=7]
+size = 25
+use_filter = true
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 40
+outline_color = Color( 0.611765, 0, 1, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "Intro_exit"
+length = 0.23
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Telon:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.08, 0.19 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0.0117647 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Telon:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.19, 0.2, 0.23 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Telon:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.00999262 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Telon:margin_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1086.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Telon:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
+
+[node name="Mpa_motor_Rally_2" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 15 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 11 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 47.0
+margin_top = 192.0
+margin_right = 1444.0
+margin_bottom = 1037.0
+color = Color( 1, 1, 1, 0.411765 )
+
+[node name="Plano" parent="." instance=ExtResource( 9 )]
+margin_left = 726.0
+margin_top = 605.0
+margin_right = -984.0
+margin_bottom = -305.0
+rect_scale = Vector2( 0.71, 0.71 )
+
+[node name="Buttons" type="Control" parent="."]
+
+[node name="Con" type="HBoxContainer" parent="Buttons"]
+margin_left = 5.0
+margin_top = 29.0
+margin_right = 2098.0
+margin_bottom = 132.0
+custom_constants/separation = 5
+
+[node name="Exit" type="TextureButton" parent="Buttons/Con"]
+margin_right = 99.0
+margin_bottom = 103.0
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+
+[node name="Info" type="TextureButton" parent="Buttons/Con"]
+margin_left = 104.0
+margin_right = 590.0
+margin_bottom = 103.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="Buttons/Con/Info"]
+margin_left = 109.0
+margin_top = 19.0
+margin_right = 375.0
+margin_bottom = 77.0
+custom_fonts/font = SubResource( 1 )
+text = "Información"
+
+[node name="Map" type="TextureButton" parent="Buttons/Con"]
+margin_left = 595.0
+margin_right = 1081.0
+margin_bottom = 103.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="Buttons/Con/Map"]
+margin_left = 208.0
+margin_top = 20.0
+margin_right = 327.0
+margin_bottom = 78.0
+custom_fonts/font = SubResource( 1 )
+text = "Mapa"
+
+[node name="Motor" type="TextureButton" parent="Buttons/Con"]
+margin_left = 1086.0
+margin_right = 1572.0
+margin_bottom = 103.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="Buttons/Con/Motor"]
+margin_left = 183.0
+margin_top = 21.0
+margin_right = 343.0
+margin_bottom = 79.0
+custom_fonts/font = SubResource( 1 )
+text = "Motor"
+
+[node name="Go" type="TextureButton" parent="Buttons/Con"]
+margin_left = 1577.0
+margin_right = 2063.0
+margin_bottom = 103.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="Buttons/Con/Go"]
+margin_left = 123.0
+margin_top = 21.0
+margin_right = 283.0
+margin_bottom = 79.0
+custom_fonts/font = SubResource( 1 )
+text = "Vamos!"
+
+[node name="Texto" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Map" type="Control" parent="Texto"]
+
+[node name="Titulo" type="Label" parent="Texto/Map"]
+margin_left = 1484.0
+margin_top = 193.0
+margin_right = 1680.0
+margin_bottom = 265.0
+custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Rally_5"
+
+[node name="text" type="Label" parent="Texto/Map/Titulo"]
+margin_left = 2.0
+margin_top = 52.0
+margin_right = 342.0
+margin_bottom = 379.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "
+Este es el mapa de elevación de la pista. Recuerda todo lo que has aprendido previamente sobre la pendiente y aplícalo ahora para comprender cómo varía la elevación en esta pista. La pendiente te ayudará a interpretar la topografía y la dificultad del terreno. ¡Buena suerte!"
+autowrap = true
+
+[node name="text2" type="Label" parent="Texto/Map/Titulo"]
+margin_left = 2.0
+margin_top = 404.0
+margin_right = 366.0
+margin_bottom = 434.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Escribe aquí la pendiente que cálculaste con dos cifras
+decimales:"
+autowrap = true
+
+[node name="Input" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="LineEdit" type="LineEdit" parent="Input"]
+margin_left = 1596.0
+margin_top = 666.0
+margin_right = 1755.0
+margin_bottom = 690.0
+max_length = 4
+caret_blink = true
+caret_blink_speed = 0.3
+
+[node name="Error" type="Label" parent="Input"]
+margin_left = 1486.0
+margin_top = 687.0
+margin_right = 1850.0
+margin_bottom = 750.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Error en el valor introducido! 
+Vuelve a intentarlo con un número :-)"
+autowrap = true
+
+[node name="Correcto" type="Label" parent="Input"]
+visible = false
+margin_left = 1486.0
+margin_top = 687.0
+margin_right = 1850.0
+margin_bottom = 750.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+autowrap = true
+
+[node name="Information" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="text" type="Label" parent="Information"]
+margin_left = 46.0
+margin_top = 268.0
+margin_right = 687.0
+margin_bottom = 991.0
+custom_colors/font_color = Color( 0.886275, 0.886275, 0.886275, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "La pendiente nos dice cuán inclinada está una superficie. Puedes imaginar una carretera, una rampa o incluso una hoja de papel. Si una carretera está muy inclinada, es difícil subirla, ¿verdad? Eso es una pendiente.
+
+Para calcular la pendiente, necesitas saber dos cosas: la altura y la distancia horizontal. Aquí tienes un truco divertido para calcularlo:
+
+Imagina que estás en un lugar alto en una montaña y quieres bajar hasta abajo. Mide cuántos pasos das para bajar (eso es la distancia horizontal) y cuántos pasos necesitas para llegar al fondo (eso es la altura).
+
+Luego, divide la altura por la distancia horizontal. Esto se llama \"altura dividida por distancia\". Si obtienes un número grande, la pendiente es empinada, como una montaña alta. Si obtienes un número pequeño, la pendiente es suave, como una colina bajita.
+
+
+Si no te quedo clara la forma de cálcular la pendiente puedes volver el menu de introducción para que no te queden dudas. 
+"
+autowrap = true
+
+[node name="text2" type="Label" parent="Information"]
+margin_left = 748.0
+margin_top = 263.0
+margin_right = 1878.0
+margin_bottom = 1052.0
+custom_colors/font_color = Color( 0.886275, 0.886275, 0.886275, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Imagina que tienes tres motores, pero cada motor tiene diferentes rendimientos. Como los motores son los que mueven el auto, son importantes a la hora de conducir por pistas con diferentes pendientes.
+
+Un ejemplo de ello es que si tu pendiente es muy alta, la elección más acertada es seleccionar el motor que sea más rápido en esas condiciones de la pista.
+
+Aquí te va un ejemplo práctico:
+
+
+
+
+
+
+
+
+
+
+Si tu pendiente es de 0.07 y tienes el siguiente motor, la componente vertical de la gráfica representa la velocidad máxima que alcanza este motor, mientras que la componente horizontal representa la pendiente de una pista en particular. En este caso, la pendiente es de 0.07. Puedes notar que 0.07 es la componente horizontal de ese punto y la componente vertical la puedes ver en el gráfico.
+
+Sin más que decir, ¡suerte en la etapa!
+
+"
+autowrap = true
+
+[node name="Motor_graficos_Infroma" parent="Information" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1305.0
+margin_top = 788.0
+margin_right = 1656.0
+margin_bottom = 813.0
+
+[node name="Titulo_1" type="Label" parent="Information"]
+margin_left = 47.0
+margin_top = 202.0
+margin_right = 313.0
+margin_bottom = 260.0
+custom_fonts/font = SubResource( 1 )
+text = "Pendiente:"
+
+[node name="Titulo_2" type="Label" parent="Information"]
+margin_left = 751.0
+margin_top = 202.0
+margin_right = 894.0
+margin_bottom = 260.0
+custom_fonts/font = SubResource( 1 )
+text = "Motor:"
+
+[node name="Division" type="ColorRect" parent="Information"]
+margin_left = 711.0
+margin_top = 266.0
+margin_right = 716.0
+margin_bottom = 1049.0
+color = Color( 0.835294, 0.784314, 0.607843, 1 )
+
+[node name="Motor" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="car" type="TextureRect" parent="Motor"]
+margin_left = 13.0
+margin_top = 137.0
+margin_right = 1933.0
+margin_bottom = 1217.0
+rect_scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 12 )
+
+[node name="Lineas" type="Line2D" parent="Motor/car"]
+position = Vector2( 1573.33, 550 )
+scale = Vector2( 3.33333, 3.33333 )
+points = PoolVector2Array( -0.248962, 0, 294.501, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+antialiased = true
+
+[node name="Lineas2" type="Line2D" parent="Motor/car"]
+position = Vector2( 1573.33, 550 )
+scale = Vector2( 3.33333, 3.33333 )
+points = PoolVector2Array( 14.751, 222, 14.751, 172.5, 372.501, 172.5, 372.501, 108.75 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+antialiased = true
+
+[node name="Bola" type="MeshInstance2D" parent="Motor/car"]
+position = Vector2( 1573.33, 550 )
+scale = Vector2( 3.33333, 3.33333 )
+mesh = SubResource( 4 )
+
+[node name="Bola2" type="MeshInstance2D" parent="Motor/car"]
+position = Vector2( 2560, 550 )
+scale = Vector2( 3.33333, 3.33333 )
+mesh = SubResource( 4 )
+
+[node name="Bola3" type="MeshInstance2D" parent="Motor/car"]
+position = Vector2( 1622.5, 1292.5 )
+scale = Vector2( 3.33333, 3.33333 )
+mesh = SubResource( 4 )
+
+[node name="Bola4" type="MeshInstance2D" parent="Motor/car"]
+position = Vector2( 2815, 912.5 )
+scale = Vector2( 3.33333, 3.33333 )
+mesh = SubResource( 4 )
+
+[node name="Engine" type="TextureRect" parent="Motor"]
+margin_left = 997.0
+margin_top = 229.0
+margin_right = 1402.0
+margin_bottom = 598.0
+rect_scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 7 )
+
+[node name="Gear0" type="Sprite" parent="Motor/Engine"]
+position = Vector2( 177.143, 288.571 )
+texture = ExtResource( 8 )
+
+[node name="Gear1" type="Sprite" parent="Motor/Engine"]
+position = Vector2( 291.429, 247.143 )
+texture = ExtResource( 5 )
+
+[node name="Gear2" type="Sprite" parent="Motor/Engine"]
+position = Vector2( 172.857, 152.857 )
+texture = ExtResource( 13 )
+
+[node name="Engine" type="AnimationPlayer" parent="Motor/Engine"]
+autoplay = "Engine"
+anims/Engine = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+
+[node name="Motor_container" type="VBoxContainer" parent="Motor"]
+margin_left = 662.0
+margin_top = 942.0
+margin_right = 999.0
+margin_bottom = 1012.0
+custom_constants/separation = 210
+
+[node name="Motor_graficos" parent="Motor/Motor_container" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 337.0
+margin_bottom = 0.0
+
+[node name="Button" type="CheckBox" parent="Motor/Motor_container/Motor_graficos"]
+margin_left = 345.0
+margin_top = -271.0
+margin_right = 587.0
+margin_bottom = -199.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Seleccionar este Motor "
+
+[node name="Lineas" type="Line2D" parent="Motor/Motor_container/Motor_graficos"]
+position = Vector2( 1573.33, 550 )
+scale = Vector2( 3.33333, 3.33333 )
+points = PoolVector2Array( -295.899, -201.9, -255.099, -201.9, -255.099, -255.3, -227.499, -255.3 )
+width = 1.5
+default_color = Color( 1, 1, 1, 1 )
+antialiased = true
+
+[node name="Motor_graficos2" parent="Motor/Motor_container" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 210.0
+margin_right = 337.0
+margin_bottom = 210.0
+
+[node name="Button_2" type="CheckBox" parent="Motor/Motor_container/Motor_graficos2"]
+margin_left = 345.0
+margin_top = -271.0
+margin_right = 587.0
+margin_bottom = -199.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Seleccionar este Motor "
+
+[node name="Lineas" type="Line2D" parent="Motor/Motor_container/Motor_graficos2"]
+position = Vector2( 1573.33, 550 )
+scale = Vector2( 3.33333, 3.33333 )
+points = PoolVector2Array( -295.899, -201.9, -255.099, -201.9, -255.099, -229.2, -225.999, -229.2 )
+width = 1.5
+default_color = Color( 1, 1, 1, 1 )
+antialiased = true
+
+[node name="Motor_graficos3" parent="Motor/Motor_container" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 420.0
+margin_right = 337.0
+margin_bottom = 420.0
+
+[node name="Button_3" type="CheckBox" parent="Motor/Motor_container/Motor_graficos3"]
+margin_left = 345.0
+margin_top = -271.0
+margin_right = 587.0
+margin_bottom = -204.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Seleccionar este Motor "
+
+[node name="Lineas" type="Line2D" parent="Motor/Motor_container/Motor_graficos3"]
+position = Vector2( 1573.33, 550 )
+scale = Vector2( 3.33333, 3.33333 )
+points = PoolVector2Array( -295.899, -201.9, -255.099, -201.9, -225.399, -201.9 )
+width = 1.5
+default_color = Color( 1, 1, 1, 1 )
+antialiased = true
+
+[node name="Motor_graficos5" parent="Motor/Motor_container" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 630.0
+margin_right = 337.0
+margin_bottom = 630.0
+
+[node name="Button_5" type="CheckBox" parent="Motor/Motor_container/Motor_graficos5"]
+margin_left = 345.0
+margin_top = -271.0
+margin_right = 587.0
+margin_bottom = -204.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Seleccionar este Motor "
+
+[node name="Lineas" type="Line2D" parent="Motor/Motor_container/Motor_graficos5"]
+position = Vector2( 1573.33, 550 )
+scale = Vector2( 3.33333, 3.33333 )
+points = PoolVector2Array( -295.899, -201.9, -255.099, -201.9, -255.099, -175.8, -224.199, -175.8 )
+width = 1.5
+default_color = Color( 1, 1, 1, 1 )
+antialiased = true
+
+[node name="Motor_graficos4" parent="Motor/Motor_container" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 840.0
+margin_right = 337.0
+margin_bottom = 840.0
+rect_pivot_offset = Vector2( -80, -229 )
+
+[node name="Button_4" type="CheckBox" parent="Motor/Motor_container/Motor_graficos4"]
+margin_left = 345.0
+margin_top = -271.0
+margin_right = 587.0
+margin_bottom = -204.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Seleccionar este Motor "
+
+[node name="Lineas" type="Line2D" parent="Motor/Motor_container/Motor_graficos4"]
+position = Vector2( 1573.33, 550 )
+scale = Vector2( 3.33333, 3.33333 )
+points = PoolVector2Array( -295.899, -201.9, -255.099, -201.9, -255.099, -175.8, -224.199, -175.8 )
+width = 1.5
+default_color = Color( 1, 1, 1, 1 )
+antialiased = true
+
+[node name="Titulo" type="Label" parent="Motor"]
+margin_left = 1484.0
+margin_top = 193.0
+margin_right = 1680.0
+margin_bottom = 265.0
+custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Motor:"
+
+[node name="text" type="Label" parent="Motor/Titulo"]
+margin_left = 2.0
+margin_top = 52.0
+margin_right = 342.0
+margin_bottom = 379.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "
+En esta sección, puedes consultar cómo se comporta cada motor en función de la inclinación de la pista. Si tienes duda de como funciona cada motor ve a infromación. "
+autowrap = true
+
+[node name="Text_pendiente" type="Label" parent="Motor/Titulo"]
+margin_left = 2.0
+margin_top = 273.0
+margin_right = 342.0
+margin_bottom = 336.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "La pendinete que calculaste es ___ estos son los desempeños del motor "
+autowrap = true
+
+[node name="Botones_motor" type="Control" parent="Motor"]
+margin_top = 40.0
+margin_right = 40.0
+margin_bottom = 80.0
+
+[node name="M_1" type="TextureButton" parent="Motor/Botones_motor"]
+margin_left = 1486.0
+margin_top = 560.0
+margin_right = 1972.0
+margin_bottom = 663.0
+rect_scale = Vector2( 0.7, 0.7 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="Motor/Botones_motor/M_1"]
+margin_left = 168.0
+margin_top = 19.0
+margin_right = 349.0
+margin_bottom = 77.0
+custom_fonts/font = SubResource( 1 )
+text = "Motor 1 "
+
+[node name="M_2" type="TextureButton" parent="Motor/Botones_motor"]
+margin_left = 1486.0
+margin_top = 652.0
+margin_right = 1972.0
+margin_bottom = 755.0
+rect_scale = Vector2( 0.7, 0.7 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="Motor/Botones_motor/M_2"]
+margin_left = 168.0
+margin_top = 19.0
+margin_right = 349.0
+margin_bottom = 77.0
+custom_fonts/font = SubResource( 1 )
+text = "Motor 2"
+
+[node name="M_3" type="TextureButton" parent="Motor/Botones_motor"]
+margin_left = 1486.0
+margin_top = 740.0
+margin_right = 1972.0
+margin_bottom = 843.0
+rect_scale = Vector2( 0.7, 0.7 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="Motor/Botones_motor/M_3"]
+margin_left = 168.0
+margin_top = 19.0
+margin_right = 349.0
+margin_bottom = 77.0
+custom_fonts/font = SubResource( 1 )
+text = "Motor 3"
+
+[node name="M_4" type="TextureButton" parent="Motor/Botones_motor"]
+margin_left = 1489.0
+margin_top = 829.0
+margin_right = 1975.0
+margin_bottom = 932.0
+rect_scale = Vector2( 0.7, 0.7 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="Motor/Botones_motor/M_4"]
+margin_left = 168.0
+margin_top = 19.0
+margin_right = 349.0
+margin_bottom = 77.0
+custom_fonts/font = SubResource( 1 )
+text = "Motor 4"
+
+[node name="vamos" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="text" type="Label" parent="vamos"]
+margin_left = 721.0
+margin_top = 405.0
+margin_right = 1281.0
+margin_bottom = 435.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Buen trabajo nuestro mecánico  nos dice que todo esta bien. "
+autowrap = true
+
+[node name="Next_scene" type="TextureButton" parent="vamos"]
+margin_left = 760.0
+margin_top = 500.0
+margin_right = 1246.0
+margin_bottom = 603.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="vamos/Next_scene"]
+margin_left = 183.0
+margin_top = 22.0
+margin_right = 343.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 1 )
+text = "Dale!"
+
+[node name="Telon" type="ColorRect" parent="."]
+margin_left = -6.0
+margin_top = -6.0
+margin_right = 1936.0
+margin_bottom = 1086.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+color = Color( 0, 0, 0, 0.00999262 )
+
+[node name="Label" type="Label" parent="Telon"]
+margin_left = 1643.0
+margin_top = 1001.0
+margin_right = 1893.0
+margin_bottom = 1059.0
+custom_fonts/font = SubResource( 8 )
+text = "Cargando..."
+
+[node name="cortina" type="AnimationPlayer" parent="."]
+autoplay = "Intro_exit"
+anims/Intro_exit = SubResource( 9 )
+anims/RESET = SubResource( 10 )
+
+[connection signal="pressed" from="Buttons/Con/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="Buttons/Con/Info" to="." method="_on_Info_pressed"]
+[connection signal="pressed" from="Buttons/Con/Map" to="." method="_on_Map_pressed"]
+[connection signal="pressed" from="Buttons/Con/Motor" to="." method="_on_Motor_pressed"]
+[connection signal="pressed" from="Buttons/Con/Go" to="." method="_on_Go_pressed"]
+[connection signal="pressed" from="Motor/Motor_container/Motor_graficos/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Motor/Motor_container/Motor_graficos2/Button_2" to="." method="_on_Button_2_pressed"]
+[connection signal="pressed" from="Motor/Motor_container/Motor_graficos3/Button_3" to="." method="_on_Button_3_pressed"]
+[connection signal="pressed" from="Motor/Motor_container/Motor_graficos5/Button_5" to="." method="_on_Button_5_pressed"]
+[connection signal="pressed" from="Motor/Motor_container/Motor_graficos4/Button_4" to="." method="_on_Button_4_pressed"]
+[connection signal="pressed" from="Motor/Botones_motor/M_1" to="." method="_on_M_1_pressed"]
+[connection signal="pressed" from="Motor/Botones_motor/M_2" to="." method="_on_M_2_pressed"]
+[connection signal="pressed" from="Motor/Botones_motor/M_3" to="." method="_on_M_3_pressed"]
+[connection signal="pressed" from="Motor/Botones_motor/M_4" to="." method="_on_M_4_pressed"]
+[connection signal="pressed" from="vamos/Next_scene" to="." method="_on_Next_scene_pressed"]
+[connection signal="animation_finished" from="cortina" to="." method="_on_cortina_animation_finished"]

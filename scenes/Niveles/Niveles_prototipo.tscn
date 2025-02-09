@@ -1,0 +1,447 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Assets/Sounds/Acepts/yes_Menu.mp3" type="AudioStream" id=1]
+[ext_resource path="res://scenes/Niveles/scripts/Niveles_prototipo.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Niveles/Texto_Intro_Over.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Niveles/Text_Intro.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Niveles/Texto_Rally_1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Niveles/Texto_Rally_1_over.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Levels_select_1.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Navegacion/Salir.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Font/Arial/ARIBL0.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Assets/Font/Arial/Arialn.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Niveles/Rect_function.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Navegacion/salir_over.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Niveles/Texto_Rally_disable.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Niveles/Clock_M.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Niveles/Clock_sing.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sounds/Acepts/Hover_.mp3" type="AudioStream" id=16]
+[ext_resource path="res://Assets/Sounds/Colin McRae Rally 1998  Main Theme.mp3" type="AudioStream" id=17]
+
+[sub_resource type="DynamicFont" id=9]
+size = 50
+use_filter = true
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 30
+use_filter = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Clock"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ClockSing:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ClockSing:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="SphereMesh" id=4]
+radius = 4.0
+height = 8.0
+
+[sub_resource type="SphereMesh" id=5]
+radius = 4.0
+height = 8.0
+
+[sub_resource type="Animation" id=1]
+resource_name = "Enter_exit"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("../ColorRect:anchor_right")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../ColorRect:anchor_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.17 ),
+"transitions": PoolRealArray( 2, 0.5 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Exit"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("../ColorRect:anchor_right")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.17 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../ColorRect:anchor_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.17 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0.5, 2 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=11]
+size = 40
+outline_color = Color( 0.611765, 0, 1, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 9 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "Intro_exit"
+length = 0.23
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Telon:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.08, 0.19 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0.0117647 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Telon:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.19, 0.2, 0.23 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Telon:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.00999262 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Telon:margin_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1086.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Telon:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Fondo_1" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+
+[node name="Buttons_" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Buttons_"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 216.0
+margin_top = -394.0
+margin_right = -345.0
+margin_bottom = 273.0
+rect_scale = Vector2( 1.1, 1.1 )
+custom_constants/separation = 55
+
+[node name="Intro" type="TextureButton" parent="Buttons_/HBoxContainer"]
+margin_right = 589.0
+margin_bottom = 699.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="Buttons_/HBoxContainer/Intro"]
+margin_left = 126.364
+margin_top = 81.8182
+margin_right = 471.364
+margin_bottom = 153.818
+custom_fonts/font = SubResource( 9 )
+text = "Introducción"
+
+[node name="Rally_1" type="TextureButton" parent="Buttons_/HBoxContainer"]
+margin_left = 644.0
+margin_right = 979.0
+margin_bottom = 699.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
+texture_disabled = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="Buttons_/HBoxContainer/Rally_1"]
+margin_left = 10.0
+margin_top = 43.0
+margin_right = 206.0
+margin_bottom = 115.0
+custom_fonts/font = SubResource( 9 )
+text = "Rally_1"
+
+[node name="text" type="Label" parent="Buttons_/HBoxContainer/Rally_1/Label"]
+margin_left = 5.0
+margin_top = 74.0
+margin_right = 261.0
+margin_bottom = 305.0
+custom_fonts/font = SubResource( 10 )
+text = "Aquí podrás poner en práctica tus conocimientos matemáticos y conducir un vehículo de carreras. "
+autowrap = true
+
+[node name="Label" type="Label" parent="Buttons_/HBoxContainer/Rally_1/Label"]
+margin_left = 42.3636
+margin_top = 458.818
+margin_right = 280.364
+margin_bottom = 605.818
+custom_colors/font_color = Color( 1, 0.447059, 0, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "Rally****
+** Junior"
+
+[node name="Rally_2" type="TextureButton" parent="Buttons_/HBoxContainer"]
+margin_left = 1034.0
+margin_right = 1369.0
+margin_bottom = 699.0
+disabled = true
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
+texture_disabled = ExtResource( 13 )
+
+[node name="Clock" type="Node2D" parent="Buttons_/HBoxContainer/Rally_2"]
+position = Vector2( 72.3635, 65.4545 )
+
+[node name="ClockM" type="Sprite" parent="Buttons_/HBoxContainer/Rally_2/Clock"]
+position = Vector2( 216, 579 )
+texture = ExtResource( 14 )
+
+[node name="ClockSing" type="Sprite" parent="Buttons_/HBoxContainer/Rally_2/Clock"]
+position = Vector2( 215.189, 586 )
+scale = Vector2( 1.1377, 1.5 )
+texture = ExtResource( 15 )
+offset = Vector2( 12, 0 )
+
+[node name="Clock" type="AnimationPlayer" parent="Buttons_/HBoxContainer/Rally_2/Clock"]
+autoplay = "Clock"
+anims/Clock = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+
+[node name="Label" type="Label" parent="Buttons_/HBoxContainer/Rally_2"]
+margin_left = 10.0
+margin_top = 43.0
+margin_right = 206.0
+margin_bottom = 115.0
+custom_fonts/font = SubResource( 9 )
+text = "MAP"
+
+[node name="text" type="Label" parent="Buttons_/HBoxContainer/Rally_2/Label"]
+margin_left = 5.0
+margin_top = 74.0
+margin_right = 261.0
+margin_bottom = 383.0
+custom_fonts/font = SubResource( 10 )
+text = "Supera los desafios de una etapa de rally, se el mejor y recuerda aplicar los conocimientos que has adquirido! 
+
+suerte : -) "
+autowrap = true
+
+[node name="Label" type="Label" parent="Buttons_/HBoxContainer/Rally_2/Label"]
+margin_left = 12.3636
+margin_top = 453.364
+margin_right = 250.364
+margin_bottom = 600.364
+custom_colors/font_color = Color( 1, 0.447059, 0, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "Rally
+///////////////"
+
+[node name="Exit" type="TextureButton" parent="Buttons_"]
+margin_left = 45.0
+margin_top = 29.0
+margin_right = 144.0
+margin_bottom = 127.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 12 )
+
+[node name="Fondo_funcion" type="TextureRect" parent="Buttons_"]
+margin_left = 215.0
+margin_top = 704.0
+margin_right = 889.0
+margin_bottom = 880.0
+rect_pivot_offset = Vector2( 0, 87 )
+texture = ExtResource( 11 )
+expand = true
+
+[node name="Line2D" type="Line2D" parent="Buttons_/Fondo_funcion"]
+width = 4.0
+default_color = Color( 0, 0.929412, 1, 1 )
+antialiased = true
+
+[node name="P" type="MeshInstance2D" parent="Buttons_/Fondo_funcion"]
+modulate = Color( 0, 0.929412, 1, 1 )
+mesh = SubResource( 4 )
+
+[node name="Line2D2" type="Line2D" parent="Buttons_/Fondo_funcion"]
+width = 4.0
+default_color = Color( 1, 0, 0.960784, 1 )
+antialiased = true
+
+[node name="P_2" type="MeshInstance2D" parent="Buttons_/Fondo_funcion"]
+modulate = Color( 1, 0, 0.960784, 1 )
+mesh = SubResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+margin_right = 40.0
+color = Color( 1, 1, 1, 0 )
+
+[node name="Animations" type="Node2D" parent="."]
+
+[node name="Enter_Exit" type="AnimationPlayer" parent="Animations"]
+anims/Enter_exit = SubResource( 1 )
+anims/Exit = SubResource( 6 )
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Hover" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 16 )
+
+[node name="play" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 1 )
+
+[node name="Telon" type="ColorRect" parent="."]
+margin_left = -6.0
+margin_top = -6.0
+margin_right = 1936.0
+margin_bottom = 1086.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+color = Color( 0, 0, 0, 0.00999262 )
+
+[node name="Label" type="Label" parent="Telon"]
+margin_left = 1643.0
+margin_top = 1001.0
+margin_right = 1893.0
+margin_bottom = 1059.0
+custom_fonts/font = SubResource( 11 )
+text = "Cargando..."
+
+[node name="cortina" type="AnimationPlayer" parent="."]
+anims/Intro_exit = SubResource( 7 )
+anims/RESET = SubResource( 8 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+
+[connection signal="mouse_entered" from="Buttons_/HBoxContainer/Intro" to="." method="_on_Intro_mouse_entered"]
+[connection signal="pressed" from="Buttons_/HBoxContainer/Intro" to="." method="_on_Intro_pressed"]
+[connection signal="mouse_entered" from="Buttons_/HBoxContainer/Rally_1" to="." method="_on_Rally_1_mouse_entered"]
+[connection signal="pressed" from="Buttons_/HBoxContainer/Rally_1" to="." method="_on_Rally_1_pressed"]
+[connection signal="mouse_entered" from="Buttons_/HBoxContainer/Rally_2" to="." method="_on_Rally_2_mouse_entered"]
+[connection signal="pressed" from="Buttons_/HBoxContainer/Rally_2" to="." method="_on_Rally_2_pressed"]
+[connection signal="mouse_entered" from="Buttons_/Exit" to="." method="_on_Exit_mouse_entered"]
+[connection signal="pressed" from="Buttons_/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="animation_finished" from="Animations/Enter_Exit" to="." method="_on_Enter_Exit_animation_finished"]
+[connection signal="animation_finished" from="cortina" to="." method="_on_cortina_animation_finished"]

@@ -1,0 +1,2312 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://sample car.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Camera/cam_chase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Motor_selection_3/Modelo/track_m=0.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Models/Trees/2/plane/Plane_tree_2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Models/Trees/1/plane/Tree_Green_Plane.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Models/Trees/3/plane/Plane_tree_pink_3.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Models/carpa/carpa.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Car_motor_properties/Car_Engine_propiesties.gd" type="Script" id=11]
+[ext_resource path="res://scenes/Motor_selection/Rally_1/Scripts/Rally_1.gd" type="Script" id=12]
+[ext_resource path="res://scenes/User_Interface_Rally_Competition/User_Interface_Rally.tscn" type="PackedScene" id=13]
+
+[sub_resource type="QuadMesh" id=7]
+size = Vector2( 100, 20 )
+
+[sub_resource type="ConcavePolygonShape" id=8]
+data = PoolVector3Array( -50, -10, 0, -50, 10, 0, 50, 10, 0, -50, -10, 0, 50, 10, 0, 50, -10, 0 )
+
+[sub_resource type="QuadMesh" id=9]
+size = Vector2( 60, 20 )
+
+[sub_resource type="ConcavePolygonShape" id=10]
+data = PoolVector3Array( -30, -10, 0, -30, 10, 0, 30, 10, 0, -30, -10, 0, 30, 10, 0, 30, -10, 0 )
+
+[sub_resource type="ConcavePolygonShape" id=11]
+data = PoolVector3Array( -30, -10, 0, -30, 10, 0, 30, 10, 0, -30, -10, 0, 30, 10, 0, 30, -10, 0 )
+
+[node name="Rally_1" type="Spatial"]
+script = ExtResource( 12 )
+
+[node name="car" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.0041886, 0, 0.999991, 0, 1, 0, -0.999991, 0, 0.0041886, 29.3921, 2.5554, 0.235117 )
+script = ExtResource( 11 )
+
+[node name="cam_chase" parent="." instance=ExtResource( 2 )]
+transform = Transform( -0.00514825, 0, -0.999987, 0, 1, 0, 0.999987, 0, -0.00514825, 14.524, 1.28458, 0.195925 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( -0.991925, 0.0999576, 0.0780533, 0, -0.615455, 0.788172, 0.126822, 0.781808, 0.610485, 0, 22.2931, 0 )
+light_energy = 2.0
+
+[node name="Elemets_Track" type="Spatial" parent="."]
+
+[node name="star_Barrer" type="MeshInstance" parent="Elemets_Track"]
+transform = Transform( -0.00652739, 0, 0.999978, 0, 1, 0, -0.999978, 0, -0.00652739, 14.4272, 7.07036, 1.69648 )
+visible = false
+mesh = SubResource( 7 )
+
+[node name="StaticBody" type="StaticBody" parent="Elemets_Track/star_Barrer"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Elemets_Track/star_Barrer/StaticBody"]
+shape = SubResource( 8 )
+
+[node name="Tardet_Barrer2" type="MeshInstance" parent="Elemets_Track"]
+transform = Transform( -0.0298758, 0, -0.999554, 0, 1, 0, 0.999554, 0, -0.0298758, 2123.91, 1838.16, -60.3977 )
+visible = false
+mesh = SubResource( 7 )
+
+[node name="StaticBody" type="StaticBody" parent="Elemets_Track/Tardet_Barrer2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Elemets_Track/Tardet_Barrer2/StaticBody"]
+shape = SubResource( 8 )
+
+[node name="carpa" parent="Elemets_Track" instance=ExtResource( 10 )]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 4.5, 31.7115, -1.9262, 0.856428 )
+
+[node name="carpa2" parent="Elemets_Track" instance=ExtResource( 10 )]
+transform = Transform( 6.00001, 0, 0, 0, 6, 0, 0, 0, 4.5, 2148.47, -0.605063, -65.2397 )
+
+[node name="stages" type="Spatial" parent="."]
+
+[node name="INICIO" type="MeshInstance" parent="stages"]
+transform = Transform( -0.00369966, 0, 0.999993, 0, 1, 0, -0.999993, 0, -0.00369966, 37.0714, 11.2693, -0.0444349 )
+mesh = SubResource( 9 )
+
+[node name="Salida" type="Area" parent="stages/INICIO"]
+
+[node name="CollisionShape" type="CollisionShape" parent="stages/INICIO/Salida"]
+shape = SubResource( 10 )
+
+[node name="LLEGADA" type="MeshInstance" parent="stages"]
+transform = Transform( -0.0105769, 0, -0.999945, 0, 1, 0, 0.999945, 0, -0.0105769, 2137.31, 11.1233, -65.2232 )
+visible = false
+mesh = SubResource( 9 )
+
+[node name="Llegada" type="Area" parent="stages/LLEGADA"]
+
+[node name="CollisionShape" type="CollisionShape" parent="stages/LLEGADA/Llegada"]
+shape = SubResource( 11 )
+
+[node name="Control" parent="." instance=ExtResource( 13 )]
+
+[node name="track_m=0" parent="." instance=ExtResource( 3 )]
+transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0 )
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="Tree" type="Spatial" parent="."]
+
+[node name="Tree_Green_Plane" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 73.8673, -0.50133, -37.7301 )
+
+[node name="Tree_Green_Plane2" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 112.018, -0.50133, -49.7634 )
+
+[node name="Tree_Green_Plane3" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 148.119, -0.50133, -45.3876 )
+
+[node name="Tree_Green_Plane4" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 203.886, -0.50133, -40.8308 )
+
+[node name="Tree_Green_Plane5" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 265.295, -0.50133, -52.3314 )
+
+[node name="Tree_Green_Plane6" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 355.13, -0.50133, -43.4347 )
+
+[node name="Tree_Green_Plane7" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 360.104, -0.50133, -31.1714 )
+
+[node name="Tree_Green_Plane8" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 398.255, -0.50133, -43.2048 )
+
+[node name="Tree_Green_Plane9" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 434.355, -0.50133, -38.829 )
+
+[node name="Tree_Green_Plane10" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 490.123, -0.50133, -34.2722 )
+
+[node name="Tree_Green_Plane11" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 551.532, -0.50133, -45.7728 )
+
+[node name="Tree_Green_Plane12" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 641.367, -0.50133, -36.8761 )
+
+[node name="Tree_Green_Plane13" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.96313, 0, 0.269037, 0, 1, 0, -0.269037, 0, 0.96313, 563.513, -0.50133, -101.4 )
+
+[node name="Tree_Green_Plane14" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.96313, 0, 0.269037, 0, 1, 0, -0.269037, 0, 0.96313, 597.02, -0.50133, -123.253 )
+
+[node name="Tree_Green_Plane15" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.96313, 0, 0.269037, 0, 1, 0, -0.269037, 0, 0.96313, 632.967, -0.50133, -128.751 )
+
+[node name="Tree_Green_Plane16" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.96313, 0, 0.269037, 0, 1, 0, -0.269037, 0, 0.96313, 687.904, -0.50133, -139.366 )
+
+[node name="Tree_Green_Plane17" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.96313, 0, 0.269037, 0, 1, 0, -0.269037, 0, 0.96313, 743.955, -0.50133, -166.964 )
+
+[node name="Tree_Green_Plane18" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.96313, 0, 0.269037, 0, 1, 0, -0.269037, 0, 0.96313, 832.871, -0.50133, -182.564 )
+
+[node name="Tree_Green_Plane19" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999972, 0, 0.00748739, 0, 1, 0, -0.00748739, 0, 0.999972, 25.5905, -0.50133, 85.4424 )
+
+[node name="Tree_Green_Plane20" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999972, 0, 0.00748739, 0, 1, 0, -0.00748739, 0, 0.999972, 63.6506, -0.50133, 73.1237 )
+
+[node name="Tree_Green_Plane21" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999972, 0, 0.00748739, 0, 1, 0, -0.00748739, 0, 0.999972, 99.7824, -0.50133, 77.229 )
+
+[node name="Tree_Green_Plane22" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999972, 0, 0.00748739, 0, 1, 0, -0.00748739, 0, 0.999972, 155.582, -0.50133, 81.3682 )
+
+[node name="Tree_Green_Plane23" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999972, 0, 0.00748739, 0, 1, 0, -0.00748739, 0, 0.999972, 216.904, -0.50133, 69.4081 )
+
+[node name="Tree_Green_Plane24" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999972, 0, 0.00748739, 0, 1, 0, -0.00748739, 0, 0.999972, 306.803, -0.50133, 77.632 )
+
+[node name="Tree_Green_Plane25" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999972, 0, 0.00748739, 0, 1, 0, -0.00748739, 0, 0.999972, 322.942, -0.50133, 94.545 )
+
+[node name="Tree_Green_Plane26" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999972, 0, 0.00748739, 0, 1, 0, -0.00748739, 0, 0.999972, 361.002, -0.50133, 82.2263 )
+
+[node name="Tree_Green_Plane27" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999972, 0, 0.00748739, 0, 1, 0, -0.00748739, 0, 0.999972, 397.133, -0.50133, 86.3316 )
+
+[node name="Tree_Green_Plane28" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999972, 0, 0.00748739, 0, 1, 0, -0.00748739, 0, 0.999972, 452.933, -0.50133, 90.4708 )
+
+[node name="Tree_Green_Plane29" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999972, 0, 0.00748739, 0, 1, 0, -0.00748739, 0, 0.999972, 514.255, -0.50133, 78.5107 )
+
+[node name="Tree_Green_Plane30" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999972, 0, 0.00748739, 0, 1, 0, -0.00748739, 0, 0.999972, 604.154, -0.50133, 86.7345 )
+
+[node name="Tree_Green_Plane31" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.966493, 0, 0.256694, 0, 1, 0, -0.256694, 0, 0.966493, 576.168, -0.50133, 130.377 )
+
+[node name="Tree_Green_Plane32" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.966493, 0, 0.256694, 0, 1, 0, -0.256694, 0, 0.966493, 609.952, -0.50133, 108.954 )
+
+[node name="Tree_Green_Plane33" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.966493, 0, 0.256694, 0, 1, 0, -0.256694, 0, 0.966493, 645.965, -0.50133, 103.916 )
+
+[node name="Tree_Green_Plane34" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.966493, 0, 0.256694, 0, 1, 0, -0.256694, 0, 0.966493, 701.034, -0.50133, 94.0054 )
+
+[node name="Tree_Green_Plane35" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.966493, 0, 0.256694, 0, 1, 0, -0.256694, 0, 0.966493, 757.433, -0.50133, 67.1267 )
+
+[node name="Tree_Green_Plane36" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.966493, 0, 0.256694, 0, 1, 0, -0.256694, 0, 0.966493, 846.542, -0.50133, 52.6651 )
+
+[node name="Tree_Green_Plane37" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999665, 0, -0.0258804, 0, 1, 0, 0.0258804, 0, 0.999665, 931.766, -0.50133, 43.1973 )
+
+[node name="Tree_Green_Plane38" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999665, 0, -0.0258804, 0, 1, 0, 0.0258804, 0, 0.999665, 970.216, -0.50133, 32.1553 )
+
+[node name="Tree_Green_Plane39" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999665, 0, -0.0258804, 0, 1, 0, 0.0258804, 0, 0.999665, 1006.19, -0.50133, 37.4639 )
+
+[node name="Tree_Green_Plane40" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999665, 0, -0.0258804, 0, 1, 0, 0.0258804, 0, 0.999665, 1061.82, -0.50133, 43.4625 )
+
+[node name="Tree_Green_Plane41" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999665, 0, -0.0258804, 0, 1, 0, 0.0258804, 0, 0.999665, 1123.51, -0.50133, 33.555 )
+
+[node name="Tree_Green_Plane42" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999665, 0, -0.0258804, 0, 1, 0, 0.0258804, 0, 0.999665, 1213.08, -0.50133, 44.7737 )
+
+[node name="Tree_Green_Plane43" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.988612, 0, -0.150484, 0, 1, 0, 0.150484, 0, 0.988612, 1183.1, -0.50133, 32.6791 )
+
+[node name="Tree_Green_Plane44" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.988612, 0, -0.150484, 0, 1, 0, 0.150484, 0, 0.988612, 1222.63, -0.50133, 26.5239 )
+
+[node name="Tree_Green_Plane45" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.988612, 0, -0.150484, 0, 1, 0, 0.150484, 0, 0.988612, 1257.66, -0.50133, 36.2823 )
+
+[node name="Tree_Green_Plane46" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.988612, 0, -0.150484, 0, 1, 0, 0.150484, 0, 0.988612, 1312.11, -0.50133, 49.1794 )
+
+[node name="Tree_Green_Plane47" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.988612, 0, -0.150484, 0, 1, 0, 0.150484, 0, 0.988612, 1374.55, -0.50133, 47.0508 )
+
+[node name="Tree_Green_Plane48" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.988612, 0, -0.150484, 0, 1, 0, 0.150484, 0, 0.988612, 1462.02, -0.50133, 69.3651 )
+
+[node name="Tree_Green_Plane49" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999442, 0, 0.0333993, 0, 1, 0, -0.0333993, 0, 0.999442, 1599.36, -0.50133, 65.5974 )
+
+[node name="Tree_Green_Plane50" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999442, 0, 0.0333993, 0, 1, 0, -0.0333993, 0, 0.999442, 1637.09, -0.50133, 52.2966 )
+
+[node name="Tree_Green_Plane51" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999442, 0, 0.0333993, 0, 1, 0, -0.0333993, 0, 0.999442, 1673.32, -0.50133, 55.4641 )
+
+[node name="Tree_Green_Plane52" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999442, 0, 0.0333993, 0, 1, 0, -0.0333993, 0, 0.999442, 1729.21, -0.50133, 58.1558 )
+
+[node name="Tree_Green_Plane53" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999442, 0, 0.0333993, 0, 1, 0, -0.0333993, 0, 0.999442, 1790.2, -0.50133, 44.6105 )
+
+[node name="Tree_Green_Plane54" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999442, 0, 0.0333993, 0, 1, 0, -0.0333993, 0, 0.999442, 1880.28, -0.50133, 50.5019 )
+
+[node name="Tree_Green_Plane55" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999442, 0, 0.0333993, 0, 1, 0, -0.0333993, 0, 0.999442, 1856.9, -0.50133, 18.7734 )
+
+[node name="Tree_Green_Plane56" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999442, 0, 0.0333993, 0, 1, 0, -0.0333993, 0, 0.999442, 1894.62, -0.50133, 5.47257 )
+
+[node name="Tree_Green_Plane57" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999442, 0, 0.0333993, 0, 1, 0, -0.0333993, 0, 0.999442, 1930.85, -0.50133, 8.64011 )
+
+[node name="Tree_Green_Plane58" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999442, 0, 0.0333993, 0, 1, 0, -0.0333993, 0, 0.999442, 1986.74, -0.50133, 11.3319 )
+
+[node name="Tree_Green_Plane59" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999442, 0, 0.0333993, 0, 1, 0, -0.0333993, 0, 0.999442, 2047.73, -0.50133, -2.21345 )
+
+[node name="Tree_Green_Plane60" parent="Tree" instance=ExtResource( 5 )]
+transform = Transform( 0.999442, 0, 0.0333993, 0, 1, 0, -0.0333993, 0, 0.999442, 2137.81, -0.50133, 3.67788 )
+
+[node name="Plane_tree_2" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 62.5121, 0.250452, -50.355 )
+
+[node name="Plane_tree_3" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 53.479, 0.250452, -66.2207 )
+
+[node name="Plane_tree_4" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 90.306, 0.250452, -68.8843 )
+
+[node name="Plane_tree_5" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 71.872, 0.250452, -64.7878 )
+
+[node name="Plane_tree_6" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 112.615, 0.250452, -59.4932 )
+
+[node name="Plane_tree_7" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 103.582, 0.250452, -75.3589 )
+
+[node name="Plane_tree_8" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 140.409, 0.250452, -78.0225 )
+
+[node name="Plane_tree_9" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 121.975, 0.250452, -73.9261 )
+
+[node name="Plane_tree_10" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, -7.24384, 0.250452, -68.8566 )
+
+[node name="Plane_tree_11" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, -16.2769, 0.250452, -84.7223 )
+
+[node name="Plane_tree_12" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 20.5501, 0.250452, -87.3858 )
+
+[node name="Plane_tree_13" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2.1161, 0.250452, -83.2894 )
+
+[node name="Plane_tree_14" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 42.8589, 0.250452, -77.9948 )
+
+[node name="Plane_tree_15" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 33.8258, 0.250452, -93.8605 )
+
+[node name="Plane_tree_16" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 70.6528, 0.250452, -96.5241 )
+
+[node name="Plane_tree_17" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 52.2188, 0.250452, -92.4276 )
+
+[node name="Plane_tree_18" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 173.298, 0.250452, -85.6616 )
+
+[node name="Plane_tree_19" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 210.125, 0.250452, -88.3251 )
+
+[node name="Plane_tree_20" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 191.691, 0.250452, -84.2287 )
+
+[node name="Plane_tree_21" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 232.434, 0.250452, -78.9341 )
+
+[node name="Plane_tree_22" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 223.401, 0.250452, -94.7998 )
+
+[node name="Plane_tree_23" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 260.228, 0.250452, -97.4634 )
+
+[node name="Plane_tree_24" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 241.794, 0.250452, -93.3669 )
+
+[node name="Plane_tree_25" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 112.575, 0.250452, -88.2974 )
+
+[node name="Plane_tree_26" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 103.542, 0.250452, -104.163 )
+
+[node name="Plane_tree_27" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 140.369, 0.250452, -106.827 )
+
+[node name="Plane_tree_28" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 121.935, 0.250452, -102.73 )
+
+[node name="Plane_tree_29" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 162.678, 0.250452, -97.4356 )
+
+[node name="Plane_tree_30" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 153.645, 0.250452, -113.301 )
+
+[node name="Plane_tree_31" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 190.472, 0.250452, -115.965 )
+
+[node name="Plane_tree_32" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 172.038, 0.250452, -111.868 )
+
+[node name="Plane_tree_33" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 234.78, 0.250452, -39.6889 )
+
+[node name="Plane_tree_34" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 271.607, 0.250452, -42.3525 )
+
+[node name="Plane_tree_35" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 253.173, 0.250452, -38.2561 )
+
+[node name="Plane_tree_36" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 293.915, 0.250452, -32.9614 )
+
+[node name="Plane_tree_37" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 284.882, 0.250452, -48.8271 )
+
+[node name="Plane_tree_38" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 321.709, 0.250452, -51.4907 )
+
+[node name="Plane_tree_39" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 303.275, 0.250452, -47.3943 )
+
+[node name="Plane_tree_40" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 174.057, 0.250452, -42.3248 )
+
+[node name="Plane_tree_41" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 165.024, 0.250452, -58.1905 )
+
+[node name="Plane_tree_42" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 201.851, 0.250452, -60.8541 )
+
+[node name="Plane_tree_43" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 183.417, 0.250452, -56.7576 )
+
+[node name="Plane_tree_44" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 224.159, 0.250452, -51.463 )
+
+[node name="Plane_tree_45" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 215.126, 0.250452, -67.3287 )
+
+[node name="Plane_tree_46" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 251.953, 0.250452, -69.9923 )
+
+[node name="Plane_tree_47" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 233.519, 0.250452, -65.8959 )
+
+[node name="Plane_tree_48" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 354.599, 0.250452, -59.1298 )
+
+[node name="Plane_tree_49" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 391.426, 0.250452, -61.7934 )
+
+[node name="Plane_tree_50" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 372.992, 0.250452, -57.6969 )
+
+[node name="Plane_tree_51" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 413.735, 0.250452, -52.4023 )
+
+[node name="Plane_tree_52" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 404.701, 0.250452, -68.268 )
+
+[node name="Plane_tree_53" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 441.529, 0.250452, -70.9316 )
+
+[node name="Plane_tree_54" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 423.094, 0.250452, -66.8351 )
+
+[node name="Plane_tree_55" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 293.876, 0.250452, -61.7656 )
+
+[node name="Plane_tree_56" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 284.843, 0.250452, -77.6313 )
+
+[node name="Plane_tree_57" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 321.67, 0.250452, -80.2949 )
+
+[node name="Plane_tree_58" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 303.236, 0.250452, -76.1985 )
+
+[node name="Plane_tree_59" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 343.979, 0.250452, -70.9039 )
+
+[node name="Plane_tree_60" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 334.946, 0.250452, -86.7696 )
+
+[node name="Plane_tree_61" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 371.773, 0.250452, -89.4332 )
+
+[node name="Plane_tree_62" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 353.339, 0.250452, -85.3367 )
+
+[node name="Plane_tree_63" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 220.206, 0.250452, -121.735 )
+
+[node name="Plane_tree_64" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 257.033, 0.250452, -124.399 )
+
+[node name="Plane_tree_65" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 238.599, 0.250452, -120.302 )
+
+[node name="Plane_tree_66" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 279.341, 0.250452, -115.008 )
+
+[node name="Plane_tree_67" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 270.308, 0.250452, -130.873 )
+
+[node name="Plane_tree_68" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 307.135, 0.250452, -133.537 )
+
+[node name="Plane_tree_69" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 288.701, 0.250452, -129.44 )
+
+[node name="Plane_tree_70" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 159.483, 0.250452, -124.371 )
+
+[node name="Plane_tree_71" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 150.45, 0.250452, -140.237 )
+
+[node name="Plane_tree_72" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 187.277, 0.250452, -142.9 )
+
+[node name="Plane_tree_73" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 168.843, 0.250452, -138.804 )
+
+[node name="Plane_tree_74" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 209.585, 0.250452, -133.509 )
+
+[node name="Plane_tree_75" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 200.552, 0.250452, -149.375 )
+
+[node name="Plane_tree_76" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 237.379, 0.250452, -152.038 )
+
+[node name="Plane_tree_77" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 218.945, 0.250452, -147.942 )
+
+[node name="Plane_tree_78" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 340.025, 0.250452, -141.176 )
+
+[node name="Plane_tree_79" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 376.852, 0.250452, -143.839 )
+
+[node name="Plane_tree_80" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 358.418, 0.250452, -139.743 )
+
+[node name="Plane_tree_81" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 399.161, 0.250452, -134.448 )
+
+[node name="Plane_tree_82" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 390.127, 0.250452, -150.314 )
+
+[node name="Plane_tree_83" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 426.954, 0.250452, -152.978 )
+
+[node name="Plane_tree_84" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 408.52, 0.250452, -148.881 )
+
+[node name="Plane_tree_85" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 279.302, 0.250452, -143.812 )
+
+[node name="Plane_tree_86" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 270.269, 0.250452, -159.677 )
+
+[node name="Plane_tree_87" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 307.096, 0.250452, -162.341 )
+
+[node name="Plane_tree_88" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 288.662, 0.250452, -158.245 )
+
+[node name="Plane_tree_89" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 329.405, 0.250452, -152.95 )
+
+[node name="Plane_tree_90" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 320.372, 0.250452, -168.816 )
+
+[node name="Plane_tree_91" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 357.199, 0.250452, -171.479 )
+
+[node name="Plane_tree_92" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 338.765, 0.250452, -167.383 )
+
+[node name="Plane_tree_93" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 453.929, 0.250452, -93.1268 )
+
+[node name="Plane_tree_94" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 490.756, 0.250452, -95.7904 )
+
+[node name="Plane_tree_95" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 472.322, 0.250452, -91.694 )
+
+[node name="Plane_tree_96" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 513.065, 0.250452, -86.3994 )
+
+[node name="Plane_tree_97" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 504.032, 0.250452, -102.265 )
+
+[node name="Plane_tree_98" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 540.859, 0.250452, -104.929 )
+
+[node name="Plane_tree_99" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 522.425, 0.250452, -100.832 )
+
+[node name="Plane_tree_100" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 393.206, 0.250452, -95.7627 )
+
+[node name="Plane_tree_101" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 384.173, 0.250452, -111.628 )
+
+[node name="Plane_tree_102" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 421, 0.250452, -114.292 )
+
+[node name="Plane_tree_103" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 402.566, 0.250452, -110.196 )
+
+[node name="Plane_tree_104" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 443.309, 0.250452, -104.901 )
+
+[node name="Plane_tree_105" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 434.276, 0.250452, -120.767 )
+
+[node name="Plane_tree_106" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 471.103, 0.250452, -123.43 )
+
+[node name="Plane_tree_107" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 452.669, 0.250452, -119.334 )
+
+[node name="Plane_tree_108" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 573.748, 0.250452, -112.568 )
+
+[node name="Plane_tree_109" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 610.575, 0.250452, -115.231 )
+
+[node name="Plane_tree_110" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 592.141, 0.250452, -111.135 )
+
+[node name="Plane_tree_111" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 632.884, 0.250452, -105.84 )
+
+[node name="Plane_tree_112" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 623.851, 0.250452, -121.706 )
+
+[node name="Plane_tree_113" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 660.678, 0.250452, -124.37 )
+
+[node name="Plane_tree_114" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 642.244, 0.250452, -120.273 )
+
+[node name="Plane_tree_115" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 513.025, 0.250452, -115.204 )
+
+[node name="Plane_tree_116" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 503.992, 0.250452, -131.069 )
+
+[node name="Plane_tree_117" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 540.819, 0.250452, -133.733 )
+
+[node name="Plane_tree_118" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 522.385, 0.250452, -129.636 )
+
+[node name="Plane_tree_119" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 563.128, 0.250452, -124.342 )
+
+[node name="Plane_tree_120" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 554.095, 0.250452, -140.208 )
+
+[node name="Plane_tree_121" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 590.922, 0.250452, -142.871 )
+
+[node name="Plane_tree_122" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 572.488, 0.250452, -138.775 )
+
+[node name="Plane_tree_123" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 469.663, 0.250452, -171.798 )
+
+[node name="Plane_tree_124" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 506.49, 0.250452, -174.462 )
+
+[node name="Plane_tree_125" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 488.056, 0.250452, -170.365 )
+
+[node name="Plane_tree_126" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 528.799, 0.250452, -165.071 )
+
+[node name="Plane_tree_127" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 519.766, 0.250452, -180.936 )
+
+[node name="Plane_tree_128" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 556.593, 0.250452, -183.6 )
+
+[node name="Plane_tree_129" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 538.159, 0.250452, -179.503 )
+
+[node name="Plane_tree_130" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 408.94, 0.250452, -174.434 )
+
+[node name="Plane_tree_131" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 399.907, 0.250452, -190.3 )
+
+[node name="Plane_tree_132" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 436.734, 0.250452, -192.963 )
+
+[node name="Plane_tree_133" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 418.3, 0.250452, -188.867 )
+
+[node name="Plane_tree_134" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 459.043, 0.250452, -183.572 )
+
+[node name="Plane_tree_135" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 450.01, 0.250452, -199.438 )
+
+[node name="Plane_tree_136" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 486.837, 0.250452, -202.101 )
+
+[node name="Plane_tree_137" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 468.403, 0.250452, -198.005 )
+
+[node name="Plane_tree_138" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 589.482, 0.250452, -191.239 )
+
+[node name="Plane_tree_139" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 626.31, 0.250452, -193.902 )
+
+[node name="Plane_tree_140" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 607.875, 0.250452, -189.806 )
+
+[node name="Plane_tree_141" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 648.618, 0.250452, -184.511 )
+
+[node name="Plane_tree_142" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 639.585, 0.250452, -200.377 )
+
+[node name="Plane_tree_143" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 676.412, 0.250452, -203.041 )
+
+[node name="Plane_tree_144" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 657.978, 0.250452, -198.944 )
+
+[node name="Plane_tree_145" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 528.76, 0.250452, -193.875 )
+
+[node name="Plane_tree_146" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 519.727, 0.250452, -209.74 )
+
+[node name="Plane_tree_147" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 556.554, 0.250452, -212.404 )
+
+[node name="Plane_tree_148" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 538.12, 0.250452, -208.308 )
+
+[node name="Plane_tree_149" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 578.862, 0.250452, -203.013 )
+
+[node name="Plane_tree_150" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 569.829, 0.250452, -218.879 )
+
+[node name="Plane_tree_151" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 606.656, 0.250452, -221.542 )
+
+[node name="Plane_tree_152" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 588.222, 0.250452, -217.446 )
+
+[node name="Plane_tree_153" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 770.002, 0.250452, -182.905 )
+
+[node name="Plane_tree_154" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 806.829, 0.250452, -185.568 )
+
+[node name="Plane_tree_155" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 788.395, 0.250452, -181.472 )
+
+[node name="Plane_tree_156" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 829.138, 0.250452, -176.177 )
+
+[node name="Plane_tree_157" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 820.105, 0.250452, -192.043 )
+
+[node name="Plane_tree_158" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 856.932, 0.250452, -194.706 )
+
+[node name="Plane_tree_159" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 838.498, 0.250452, -190.61 )
+
+[node name="Plane_tree_160" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 709.279, 0.250452, -185.54 )
+
+[node name="Plane_tree_161" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 700.246, 0.250452, -201.406 )
+
+[node name="Plane_tree_162" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 737.073, 0.250452, -204.07 )
+
+[node name="Plane_tree_163" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 718.639, 0.250452, -199.973 )
+
+[node name="Plane_tree_164" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 759.382, 0.250452, -194.679 )
+
+[node name="Plane_tree_165" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 750.349, 0.250452, -210.544 )
+
+[node name="Plane_tree_166" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 787.176, 0.250452, -213.208 )
+
+[node name="Plane_tree_167" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 768.742, 0.250452, -209.112 )
+
+[node name="Plane_tree_168" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 889.821, 0.250452, -202.345 )
+
+[node name="Plane_tree_169" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 926.648, 0.250452, -205.009 )
+
+[node name="Plane_tree_170" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 908.214, 0.250452, -200.913 )
+
+[node name="Plane_tree_171" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 948.957, 0.250452, -195.618 )
+
+[node name="Plane_tree_172" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 939.924, 0.250452, -211.484 )
+
+[node name="Plane_tree_173" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 976.751, 0.250452, -214.147 )
+
+[node name="Plane_tree_174" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 958.317, 0.250452, -210.051 )
+
+[node name="Plane_tree_175" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 829.099, 0.250452, -204.981 )
+
+[node name="Plane_tree_176" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 820.066, 0.250452, -220.847 )
+
+[node name="Plane_tree_177" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 856.893, 0.250452, -223.511 )
+
+[node name="Plane_tree_178" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 838.459, 0.250452, -219.414 )
+
+[node name="Plane_tree_179" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 879.201, 0.250452, -214.12 )
+
+[node name="Plane_tree_180" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 870.168, 0.250452, -229.985 )
+
+[node name="Plane_tree_181" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 906.995, 0.250452, -232.649 )
+
+[node name="Plane_tree_182" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 888.561, 0.250452, -228.552 )
+
+[node name="Plane_tree_183" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1087.46, 0.250452, -179.665 )
+
+[node name="Plane_tree_184" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1124.29, 0.250452, -182.329 )
+
+[node name="Plane_tree_185" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1105.86, 0.250452, -178.232 )
+
+[node name="Plane_tree_186" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1146.6, 0.250452, -172.938 )
+
+[node name="Plane_tree_187" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1137.57, 0.250452, -188.803 )
+
+[node name="Plane_tree_188" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1174.39, 0.250452, -191.467 )
+
+[node name="Plane_tree_189" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1155.96, 0.250452, -187.371 )
+
+[node name="Plane_tree_190" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1026.74, 0.250452, -182.301 )
+
+[node name="Plane_tree_191" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1017.71, 0.250452, -198.167 )
+
+[node name="Plane_tree_192" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1054.53, 0.250452, -200.83 )
+
+[node name="Plane_tree_193" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1036.1, 0.250452, -196.734 )
+
+[node name="Plane_tree_194" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1076.84, 0.250452, -191.439 )
+
+[node name="Plane_tree_195" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1067.81, 0.250452, -207.305 )
+
+[node name="Plane_tree_196" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1104.64, 0.250452, -209.969 )
+
+[node name="Plane_tree_197" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1086.2, 0.250452, -205.872 )
+
+[node name="Plane_tree_198" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1207.28, 0.250452, -199.106 )
+
+[node name="Plane_tree_199" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1244.11, 0.250452, -201.77 )
+
+[node name="Plane_tree_200" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1225.68, 0.250452, -197.673 )
+
+[node name="Plane_tree_201" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1266.42, 0.250452, -192.379 )
+
+[node name="Plane_tree_202" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1257.39, 0.250452, -208.244 )
+
+[node name="Plane_tree_203" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1294.21, 0.250452, -210.908 )
+
+[node name="Plane_tree_204" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1275.78, 0.250452, -206.811 )
+
+[node name="Plane_tree_205" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1146.56, 0.250452, -201.742 )
+
+[node name="Plane_tree_206" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1137.53, 0.250452, -217.608 )
+
+[node name="Plane_tree_207" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1174.35, 0.250452, -220.271 )
+
+[node name="Plane_tree_208" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1155.92, 0.250452, -216.175 )
+
+[node name="Plane_tree_209" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1196.66, 0.250452, -210.88 )
+
+[node name="Plane_tree_210" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1187.63, 0.250452, -226.746 )
+
+[node name="Plane_tree_211" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1224.46, 0.250452, -229.409 )
+
+[node name="Plane_tree_212" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1206.02, 0.250452, -225.313 )
+
+[node name="Plane_tree_213" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1326.25, 0.250452, -155.138 )
+
+[node name="Plane_tree_214" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1363.08, 0.250452, -157.802 )
+
+[node name="Plane_tree_215" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1344.65, 0.250452, -153.705 )
+
+[node name="Plane_tree_216" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1385.39, 0.250452, -148.411 )
+
+[node name="Plane_tree_217" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1376.36, 0.250452, -164.277 )
+
+[node name="Plane_tree_218" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1413.18, 0.250452, -166.94 )
+
+[node name="Plane_tree_219" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1394.75, 0.250452, -162.844 )
+
+[node name="Plane_tree_220" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1265.53, 0.250452, -157.774 )
+
+[node name="Plane_tree_221" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1256.5, 0.250452, -173.64 )
+
+[node name="Plane_tree_222" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1293.33, 0.250452, -176.303 )
+
+[node name="Plane_tree_223" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1274.89, 0.250452, -172.207 )
+
+[node name="Plane_tree_224" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1315.63, 0.250452, -166.912 )
+
+[node name="Plane_tree_225" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1306.6, 0.250452, -182.778 )
+
+[node name="Plane_tree_226" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1343.43, 0.250452, -185.442 )
+
+[node name="Plane_tree_227" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1324.99, 0.250452, -181.345 )
+
+[node name="Plane_tree_228" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1446.07, 0.250452, -174.579 )
+
+[node name="Plane_tree_229" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1482.9, 0.250452, -177.243 )
+
+[node name="Plane_tree_230" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1464.47, 0.250452, -173.146 )
+
+[node name="Plane_tree_231" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1505.21, 0.250452, -167.852 )
+
+[node name="Plane_tree_232" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1496.18, 0.250452, -183.717 )
+
+[node name="Plane_tree_233" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1533, 0.250452, -186.381 )
+
+[node name="Plane_tree_234" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1514.57, 0.250452, -182.285 )
+
+[node name="Plane_tree_235" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1385.35, 0.250452, -177.215 )
+
+[node name="Plane_tree_236" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1376.32, 0.250452, -193.081 )
+
+[node name="Plane_tree_237" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1413.14, 0.250452, -195.744 )
+
+[node name="Plane_tree_238" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1394.71, 0.250452, -191.648 )
+
+[node name="Plane_tree_239" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1435.45, 0.250452, -186.353 )
+
+[node name="Plane_tree_240" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1426.42, 0.250452, -202.219 )
+
+[node name="Plane_tree_241" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1463.25, 0.250452, -204.883 )
+
+[node name="Plane_tree_242" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1444.81, 0.250452, -200.786 )
+
+[node name="Plane_tree_243" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1532.76, 0.250452, -111.067 )
+
+[node name="Plane_tree_244" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1569.59, 0.250452, -113.73 )
+
+[node name="Plane_tree_245" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1551.15, 0.250452, -109.634 )
+
+[node name="Plane_tree_246" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1591.9, 0.250452, -104.339 )
+
+[node name="Plane_tree_247" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1582.86, 0.250452, -120.205 )
+
+[node name="Plane_tree_248" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1619.69, 0.250452, -122.868 )
+
+[node name="Plane_tree_249" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1601.26, 0.250452, -118.772 )
+
+[node name="Plane_tree_250" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1472.04, 0.250452, -113.702 )
+
+[node name="Plane_tree_251" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1463.01, 0.250452, -129.568 )
+
+[node name="Plane_tree_252" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1499.83, 0.250452, -132.232 )
+
+[node name="Plane_tree_253" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1481.4, 0.250452, -128.135 )
+
+[node name="Plane_tree_254" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1522.14, 0.250452, -122.841 )
+
+[node name="Plane_tree_255" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1513.11, 0.250452, -138.706 )
+
+[node name="Plane_tree_256" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1549.94, 0.250452, -141.37 )
+
+[node name="Plane_tree_257" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1531.5, 0.250452, -137.273 )
+
+[node name="Plane_tree_258" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1652.58, 0.250452, -130.507 )
+
+[node name="Plane_tree_259" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1689.41, 0.250452, -133.171 )
+
+[node name="Plane_tree_260" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1670.97, 0.250452, -129.075 )
+
+[node name="Plane_tree_261" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1711.72, 0.250452, -123.78 )
+
+[node name="Plane_tree_262" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1702.68, 0.250452, -139.646 )
+
+[node name="Plane_tree_263" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1739.51, 0.250452, -142.309 )
+
+[node name="Plane_tree_264" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1721.08, 0.250452, -138.213 )
+
+[node name="Plane_tree_265" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1591.86, 0.250452, -133.143 )
+
+[node name="Plane_tree_266" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1582.82, 0.250452, -149.009 )
+
+[node name="Plane_tree_267" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1619.65, 0.250452, -151.673 )
+
+[node name="Plane_tree_268" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1601.22, 0.250452, -147.576 )
+
+[node name="Plane_tree_269" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1641.96, 0.250452, -142.281 )
+
+[node name="Plane_tree_270" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1632.93, 0.250452, -158.147 )
+
+[node name="Plane_tree_271" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1669.75, 0.250452, -160.811 )
+
+[node name="Plane_tree_272" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1651.32, 0.250452, -156.714 )
+
+[node name="Plane_tree_273" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1625.31, 0.250452, -191.025 )
+
+[node name="Plane_tree_274" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1662.14, 0.250452, -193.689 )
+
+[node name="Plane_tree_275" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1643.71, 0.250452, -189.592 )
+
+[node name="Plane_tree_276" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1684.45, 0.250452, -184.298 )
+
+[node name="Plane_tree_277" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1675.42, 0.250452, -200.163 )
+
+[node name="Plane_tree_278" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1712.24, 0.250452, -202.827 )
+
+[node name="Plane_tree_279" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1693.81, 0.250452, -198.731 )
+
+[node name="Plane_tree_280" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1564.59, 0.250452, -193.661 )
+
+[node name="Plane_tree_281" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1555.56, 0.250452, -209.527 )
+
+[node name="Plane_tree_282" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1592.38, 0.250452, -212.19 )
+
+[node name="Plane_tree_283" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1573.95, 0.250452, -208.094 )
+
+[node name="Plane_tree_284" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1614.69, 0.250452, -202.799 )
+
+[node name="Plane_tree_285" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1605.66, 0.250452, -218.665 )
+
+[node name="Plane_tree_286" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1642.49, 0.250452, -221.329 )
+
+[node name="Plane_tree_287" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1624.05, 0.250452, -217.232 )
+
+[node name="Plane_tree_288" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1745.13, 0.250452, -210.466 )
+
+[node name="Plane_tree_289" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1781.96, 0.250452, -213.13 )
+
+[node name="Plane_tree_290" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1763.52, 0.250452, -209.033 )
+
+[node name="Plane_tree_291" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1804.27, 0.250452, -203.739 )
+
+[node name="Plane_tree_292" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1795.23, 0.250452, -219.604 )
+
+[node name="Plane_tree_293" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1832.06, 0.250452, -222.268 )
+
+[node name="Plane_tree_294" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1813.63, 0.250452, -218.171 )
+
+[node name="Plane_tree_295" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1684.41, 0.250452, -213.102 )
+
+[node name="Plane_tree_296" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1675.38, 0.250452, -228.968 )
+
+[node name="Plane_tree_297" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1712.2, 0.250452, -231.631 )
+
+[node name="Plane_tree_298" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1693.77, 0.250452, -227.535 )
+
+[node name="Plane_tree_299" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1734.51, 0.250452, -222.24 )
+
+[node name="Plane_tree_300" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1725.48, 0.250452, -238.106 )
+
+[node name="Plane_tree_301" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1762.31, 0.250452, -240.77 )
+
+[node name="Plane_tree_302" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1743.87, 0.250452, -236.673 )
+
+[node name="Plane_tree_303" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1860.1, 0.250452, -153.06 )
+
+[node name="Plane_tree_304" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1896.93, 0.250452, -155.723 )
+
+[node name="Plane_tree_305" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1878.49, 0.250452, -151.627 )
+
+[node name="Plane_tree_306" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1919.23, 0.250452, -146.332 )
+
+[node name="Plane_tree_307" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1910.2, 0.250452, -162.198 )
+
+[node name="Plane_tree_308" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1947.03, 0.250452, -164.862 )
+
+[node name="Plane_tree_309" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1928.59, 0.250452, -160.765 )
+
+[node name="Plane_tree_310" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1799.38, 0.250452, -155.696 )
+
+[node name="Plane_tree_311" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1790.34, 0.250452, -171.561 )
+
+[node name="Plane_tree_312" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1827.17, 0.250452, -174.225 )
+
+[node name="Plane_tree_313" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1808.74, 0.250452, -170.129 )
+
+[node name="Plane_tree_314" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1849.48, 0.250452, -164.834 )
+
+[node name="Plane_tree_315" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1840.45, 0.250452, -180.7 )
+
+[node name="Plane_tree_316" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1877.27, 0.250452, -183.363 )
+
+[node name="Plane_tree_317" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1858.84, 0.250452, -179.267 )
+
+[node name="Plane_tree_318" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1979.92, 0.250452, -172.501 )
+
+[node name="Plane_tree_319" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2016.74, 0.250452, -175.164 )
+
+[node name="Plane_tree_320" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1998.31, 0.250452, -171.068 )
+
+[node name="Plane_tree_321" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2039.05, 0.250452, -165.773 )
+
+[node name="Plane_tree_322" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2030.02, 0.250452, -181.639 )
+
+[node name="Plane_tree_323" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2066.85, 0.250452, -184.303 )
+
+[node name="Plane_tree_324" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2048.41, 0.250452, -180.206 )
+
+[node name="Plane_tree_325" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1919.19, 0.250452, -175.137 )
+
+[node name="Plane_tree_326" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1910.16, 0.250452, -191.002 )
+
+[node name="Plane_tree_327" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1946.99, 0.250452, -193.666 )
+
+[node name="Plane_tree_328" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1928.55, 0.250452, -189.569 )
+
+[node name="Plane_tree_329" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1969.3, 0.250452, -184.275 )
+
+[node name="Plane_tree_330" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1960.26, 0.250452, -200.141 )
+
+[node name="Plane_tree_331" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1997.09, 0.250452, -202.804 )
+
+[node name="Plane_tree_332" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1978.66, 0.250452, -198.708 )
+
+[node name="Plane_tree_333" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2000.97, 0.250452, -123.087 )
+
+[node name="Plane_tree_334" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2037.8, 0.250452, -125.751 )
+
+[node name="Plane_tree_335" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2019.36, 0.250452, -121.654 )
+
+[node name="Plane_tree_336" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2060.11, 0.250452, -116.36 )
+
+[node name="Plane_tree_337" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2051.07, 0.250452, -132.225 )
+
+[node name="Plane_tree_338" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2087.9, 0.250452, -134.889 )
+
+[node name="Plane_tree_339" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2069.47, 0.250452, -130.792 )
+
+[node name="Plane_tree_340" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1940.25, 0.250452, -125.723 )
+
+[node name="Plane_tree_341" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1931.21, 0.250452, -141.589 )
+
+[node name="Plane_tree_342" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1968.04, 0.250452, -144.252 )
+
+[node name="Plane_tree_343" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1949.61, 0.250452, -140.156 )
+
+[node name="Plane_tree_344" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1990.35, 0.250452, -134.861 )
+
+[node name="Plane_tree_345" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1981.32, 0.250452, -150.727 )
+
+[node name="Plane_tree_346" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2018.14, 0.250452, -153.391 )
+
+[node name="Plane_tree_347" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 1999.71, 0.250452, -149.294 )
+
+[node name="Plane_tree_348" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2120.79, 0.250452, -142.528 )
+
+[node name="Plane_tree_349" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2157.62, 0.250452, -145.192 )
+
+[node name="Plane_tree_350" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2139.18, 0.250452, -141.095 )
+
+[node name="Plane_tree_351" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2179.92, 0.250452, -135.801 )
+
+[node name="Plane_tree_352" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2170.89, 0.250452, -151.666 )
+
+[node name="Plane_tree_353" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2207.72, 0.250452, -154.33 )
+
+[node name="Plane_tree_354" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2189.28, 0.250452, -150.233 )
+
+[node name="Plane_tree_355" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2060.07, 0.250452, -145.164 )
+
+[node name="Plane_tree_356" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2051.03, 0.250452, -161.03 )
+
+[node name="Plane_tree_357" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2087.86, 0.250452, -163.693 )
+
+[node name="Plane_tree_358" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2069.43, 0.250452, -159.597 )
+
+[node name="Plane_tree_359" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2110.17, 0.250452, -154.302 )
+
+[node name="Plane_tree_360" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2101.14, 0.250452, -170.168 )
+
+[node name="Plane_tree_361" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2137.96, 0.250452, -172.831 )
+
+[node name="Plane_tree_362" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 2119.53, 0.250452, -168.735 )
+
+[node name="Plane_tree_363" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 81.0128, 0.250452, 132.167 )
+
+[node name="Plane_tree_364" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 117.84, 0.250452, 129.504 )
+
+[node name="Plane_tree_365" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 99.4058, 0.250452, 133.6 )
+
+[node name="Plane_tree_366" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 140.149, 0.250452, 138.895 )
+
+[node name="Plane_tree_367" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 131.116, 0.250452, 123.029 )
+
+[node name="Plane_tree_368" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 167.943, 0.250452, 120.365 )
+
+[node name="Plane_tree_369" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 149.509, 0.250452, 124.462 )
+
+[node name="Plane_tree_370" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 20.2899, 0.250452, 129.531 )
+
+[node name="Plane_tree_371" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 11.257, 0.250452, 113.666 )
+
+[node name="Plane_tree_372" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 48.0839, 0.250452, 111.002 )
+
+[node name="Plane_tree_373" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 29.6499, 0.250452, 115.099 )
+
+[node name="Plane_tree_374" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 70.3927, 0.250452, 120.393 )
+
+[node name="Plane_tree_375" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 61.3596, 0.250452, 104.527 )
+
+[node name="Plane_tree_376" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 98.1866, 0.250452, 101.864 )
+
+[node name="Plane_tree_377" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 79.7526, 0.250452, 105.96 )
+
+[node name="Plane_tree_378" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 200.832, 0.250452, 112.726 )
+
+[node name="Plane_tree_379" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 237.659, 0.250452, 110.063 )
+
+[node name="Plane_tree_380" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 219.225, 0.250452, 114.159 )
+
+[node name="Plane_tree_381" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 259.968, 0.250452, 119.454 )
+
+[node name="Plane_tree_382" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 250.935, 0.250452, 103.588 )
+
+[node name="Plane_tree_383" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 287.762, 0.250452, 100.925 )
+
+[node name="Plane_tree_384" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 269.328, 0.250452, 105.021 )
+
+[node name="Plane_tree_385" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 140.109, 0.250452, 110.091 )
+
+[node name="Plane_tree_386" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 131.076, 0.250452, 94.2249 )
+
+[node name="Plane_tree_387" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 167.903, 0.250452, 91.5613 )
+
+[node name="Plane_tree_388" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 149.469, 0.250452, 95.6577 )
+
+[node name="Plane_tree_389" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 190.212, 0.250452, 100.952 )
+
+[node name="Plane_tree_390" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 181.179, 0.250452, 85.0866 )
+
+[node name="Plane_tree_391" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 218.006, 0.250452, 82.4231 )
+
+[node name="Plane_tree_392" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 199.572, 0.250452, 86.5195 )
+
+[node name="Plane_tree_393" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 355.292, 0.250452, 141.68 )
+
+[node name="Plane_tree_394" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 392.119, 0.250452, 139.016 )
+
+[node name="Plane_tree_395" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 373.685, 0.250452, 143.113 )
+
+[node name="Plane_tree_396" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 414.428, 0.250452, 148.407 )
+
+[node name="Plane_tree_397" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 405.395, 0.250452, 132.542 )
+
+[node name="Plane_tree_398" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 442.222, 0.250452, 129.878 )
+
+[node name="Plane_tree_399" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 423.788, 0.250452, 133.975 )
+
+[node name="Plane_tree_400" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 294.57, 0.250452, 139.044 )
+
+[node name="Plane_tree_401" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 285.537, 0.250452, 123.178 )
+
+[node name="Plane_tree_402" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 322.363, 0.250452, 120.515 )
+
+[node name="Plane_tree_403" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 303.93, 0.250452, 124.611 )
+
+[node name="Plane_tree_404" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 344.672, 0.250452, 129.906 )
+
+[node name="Plane_tree_405" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 335.639, 0.250452, 114.04 )
+
+[node name="Plane_tree_406" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 372.466, 0.250452, 111.377 )
+
+[node name="Plane_tree_407" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 354.032, 0.250452, 115.473 )
+
+[node name="Plane_tree_408" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 475.112, 0.250452, 122.239 )
+
+[node name="Plane_tree_409" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 511.939, 0.250452, 119.575 )
+
+[node name="Plane_tree_410" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 493.505, 0.250452, 123.672 )
+
+[node name="Plane_tree_411" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 534.247, 0.250452, 128.967 )
+
+[node name="Plane_tree_412" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 525.214, 0.250452, 113.101 )
+
+[node name="Plane_tree_413" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 562.041, 0.250452, 110.437 )
+
+[node name="Plane_tree_414" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 543.607, 0.250452, 114.534 )
+
+[node name="Plane_tree_415" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 414.389, 0.250452, 119.603 )
+
+[node name="Plane_tree_416" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 405.356, 0.250452, 103.737 )
+
+[node name="Plane_tree_417" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 442.183, 0.250452, 101.074 )
+
+[node name="Plane_tree_418" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 423.749, 0.250452, 105.17 )
+
+[node name="Plane_tree_419" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 464.491, 0.250452, 110.465 )
+
+[node name="Plane_tree_420" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 455.458, 0.250452, 94.5992 )
+
+[node name="Plane_tree_421" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 492.285, 0.250452, 91.9357 )
+
+[node name="Plane_tree_422" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 473.851, 0.250452, 96.0321 )
+
+[node name="Plane_tree_423" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 529.134, 0.250452, 175.649 )
+
+[node name="Plane_tree_424" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 565.961, 0.250452, 172.985 )
+
+[node name="Plane_tree_425" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 547.527, 0.250452, 177.082 )
+
+[node name="Plane_tree_426" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 588.27, 0.250452, 182.376 )
+
+[node name="Plane_tree_427" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 579.237, 0.250452, 166.511 )
+
+[node name="Plane_tree_428" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 616.064, 0.250452, 163.847 )
+
+[node name="Plane_tree_429" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 597.63, 0.250452, 167.944 )
+
+[node name="Plane_tree_430" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 468.411, 0.250452, 173.013 )
+
+[node name="Plane_tree_431" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 459.378, 0.250452, 157.147 )
+
+[node name="Plane_tree_432" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 496.205, 0.250452, 154.484 )
+
+[node name="Plane_tree_433" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 477.771, 0.250452, 158.58 )
+
+[node name="Plane_tree_434" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 518.514, 0.250452, 163.875 )
+
+[node name="Plane_tree_435" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 509.481, 0.250452, 148.009 )
+
+[node name="Plane_tree_436" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 546.308, 0.250452, 145.346 )
+
+[node name="Plane_tree_437" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 527.874, 0.250452, 149.442 )
+
+[node name="Plane_tree_438" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 648.953, 0.250452, 156.208 )
+
+[node name="Plane_tree_439" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 685.78, 0.250452, 153.545 )
+
+[node name="Plane_tree_440" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 667.346, 0.250452, 157.641 )
+
+[node name="Plane_tree_441" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 708.089, 0.250452, 162.936 )
+
+[node name="Plane_tree_442" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 699.056, 0.250452, 147.07 )
+
+[node name="Plane_tree_443" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 735.883, 0.250452, 144.406 )
+
+[node name="Plane_tree_444" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 717.449, 0.250452, 148.503 )
+
+[node name="Plane_tree_445" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 588.231, 0.250452, 153.572 )
+
+[node name="Plane_tree_446" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 579.197, 0.250452, 137.707 )
+
+[node name="Plane_tree_447" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 616.025, 0.250452, 135.043 )
+
+[node name="Plane_tree_448" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 597.59, 0.250452, 139.139 )
+
+[node name="Plane_tree_449" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 638.333, 0.250452, 144.434 )
+
+[node name="Plane_tree_450" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 629.3, 0.250452, 128.568 )
+
+[node name="Plane_tree_451" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 666.127, 0.250452, 125.905 )
+
+[node name="Plane_tree_452" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.328817, 0, 0.944394, 0, 1, 0, -0.944394, 0, 0.328817, 647.693, 0.250452, 130.001 )
+
+[node name="Plane_tree_453" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 776.966, 0.250452, 121.806 )
+
+[node name="Plane_tree_454" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 812.695, 0.250452, 112.49 )
+
+[node name="Plane_tree_455" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 795.313, 0.250452, 119.87 )
+
+[node name="Plane_tree_456" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 836.339, 0.250452, 117.668 )
+
+[node name="Plane_tree_457" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 824.572, 0.250452, 103.709 )
+
+[node name="Plane_tree_458" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 860.301, 0.250452, 94.3934 )
+
+[node name="Plane_tree_459" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 842.919, 0.250452, 101.774 )
+
+[node name="Plane_tree_460" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 716.776, 0.250452, 130.256 )
+
+[node name="Plane_tree_461" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 705.009, 0.250452, 116.297 )
+
+[node name="Plane_tree_462" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 740.738, 0.250452, 106.981 )
+
+[node name="Plane_tree_463" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 723.356, 0.250452, 114.362 )
+
+[node name="Plane_tree_464" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 764.382, 0.250452, 112.159 )
+
+[node name="Plane_tree_465" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 752.615, 0.250452, 98.2005 )
+
+[node name="Plane_tree_466" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 788.343, 0.250452, 88.8847 )
+
+[node name="Plane_tree_467" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 770.961, 0.250452, 96.2649 )
+
+[node name="Plane_tree_468" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 891.253, 0.250452, 80.9011 )
+
+[node name="Plane_tree_469" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 926.981, 0.250452, 71.5852 )
+
+[node name="Plane_tree_470" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 909.599, 0.250452, 78.9654 )
+
+[node name="Plane_tree_471" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 950.626, 0.250452, 76.7631 )
+
+[node name="Plane_tree_472" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 938.858, 0.250452, 62.8045 )
+
+[node name="Plane_tree_473" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 974.587, 0.250452, 53.4886 )
+
+[node name="Plane_tree_474" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 957.205, 0.250452, 60.8688 )
+
+[node name="Plane_tree_475" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 831.063, 0.250452, 89.351 )
+
+[node name="Plane_tree_476" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 819.295, 0.250452, 75.3924 )
+
+[node name="Plane_tree_477" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 855.024, 0.250452, 66.0766 )
+
+[node name="Plane_tree_478" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 837.642, 0.250452, 73.4568 )
+
+[node name="Plane_tree_479" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 878.668, 0.250452, 71.2544 )
+
+[node name="Plane_tree_480" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 866.901, 0.250452, 57.2958 )
+
+[node name="Plane_tree_481" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 902.63, 0.250452, 47.98 )
+
+[node name="Plane_tree_482" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.151606, 0, 0.988441, 0, 1, 0, -0.988441, 0, 0.151606, 885.248, 0.250452, 55.3602 )
+
+[node name="Plane_tree_483" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1042.2, 0.250452, 89.6772 )
+
+[node name="Plane_tree_484" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1079.09, 0.250452, 88.1917 )
+
+[node name="Plane_tree_485" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1060.53, 0.250452, 91.697 )
+
+[node name="Plane_tree_486" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1101.09, 0.250452, 98.2908 )
+
+[node name="Plane_tree_487" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1092.57, 0.250452, 82.1445 )
+
+[node name="Plane_tree_488" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1129.46, 0.250452, 80.659 )
+
+[node name="Plane_tree_489" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1110.9, 0.250452, 84.1643 )
+
+[node name="Plane_tree_490" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 981.588, 0.250452, 85.1026 )
+
+[node name="Plane_tree_491" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 973.067, 0.250452, 68.9563 )
+
+[node name="Plane_tree_492" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1009.96, 0.250452, 67.4708 )
+
+[node name="Plane_tree_493" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 991.405, 0.250452, 70.9761 )
+
+[node name="Plane_tree_494" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1031.96, 0.250452, 77.5698 )
+
+[node name="Plane_tree_495" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1023.44, 0.250452, 61.4236 )
+
+[node name="Plane_tree_496" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1060.33, 0.250452, 59.938 )
+
+[node name="Plane_tree_497" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1041.77, 0.250452, 63.4434 )
+
+[node name="Plane_tree_498" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1162.57, 0.250452, 74.0747 )
+
+[node name="Plane_tree_499" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1199.47, 0.250452, 72.5891 )
+
+[node name="Plane_tree_500" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1180.91, 0.250452, 76.0945 )
+
+[node name="Plane_tree_501" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1221.47, 0.250452, 82.6882 )
+
+[node name="Plane_tree_502" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1212.94, 0.250452, 66.542 )
+
+[node name="Plane_tree_503" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1249.84, 0.250452, 65.0564 )
+
+[node name="Plane_tree_504" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1231.28, 0.250452, 68.5618 )
+
+[node name="Plane_tree_505" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1101.97, 0.250452, 69.5 )
+
+[node name="Plane_tree_506" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1093.45, 0.250452, 53.3538 )
+
+[node name="Plane_tree_507" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1130.34, 0.250452, 51.8682 )
+
+[node name="Plane_tree_508" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1111.78, 0.250452, 55.3736 )
+
+[node name="Plane_tree_509" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1152.34, 0.250452, 61.9673 )
+
+[node name="Plane_tree_510" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1143.82, 0.250452, 45.8211 )
+
+[node name="Plane_tree_511" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1180.71, 0.250452, 44.3355 )
+
+[node name="Plane_tree_512" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.358824, 0, 0.933405, 0, 1, 0, -0.933405, 0, 0.358824, 1162.15, 0.250452, 47.8409 )
+
+[node name="Plane_tree_513" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1303.33, 0.250452, 104.748 )
+
+[node name="Plane_tree_514" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1340.16, 0.250452, 107.422 )
+
+[node name="Plane_tree_515" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1321.32, 0.250452, 108.818 )
+
+[node name="Plane_tree_516" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1360.88, 0.250452, 119.932 )
+
+[node name="Plane_tree_517" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1354.23, 0.250452, 102.93 )
+
+[node name="Plane_tree_518" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1391.05, 0.250452, 105.605 )
+
+[node name="Plane_tree_519" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1372.22, 0.250452, 107 )
+
+[node name="Plane_tree_520" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1243.62, 0.250452, 93.3832 )
+
+[node name="Plane_tree_521" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1236.97, 0.250452, 76.3807 )
+
+[node name="Plane_tree_522" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1273.8, 0.250452, 79.0554 )
+
+[node name="Plane_tree_523" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1254.97, 0.250452, 80.4508 )
+
+[node name="Plane_tree_524" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1294.52, 0.250452, 91.5652 )
+
+[node name="Plane_tree_525" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1287.87, 0.250452, 74.5628 )
+
+[node name="Plane_tree_526" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1324.69, 0.250452, 77.2375 )
+
+[node name="Plane_tree_527" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1305.86, 0.250452, 78.6329 )
+
+[node name="Plane_tree_528" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1424.7, 0.250452, 102.788 )
+
+[node name="Plane_tree_529" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1461.53, 0.250452, 105.463 )
+
+[node name="Plane_tree_530" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1442.69, 0.250452, 106.858 )
+
+[node name="Plane_tree_531" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1482.25, 0.250452, 117.973 )
+
+[node name="Plane_tree_532" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1475.6, 0.250452, 100.97 )
+
+[node name="Plane_tree_533" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1512.42, 0.250452, 103.645 )
+
+[node name="Plane_tree_534" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1493.59, 0.250452, 105.04 )
+
+[node name="Plane_tree_535" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1364.99, 0.250452, 91.4235 )
+
+[node name="Plane_tree_536" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1358.34, 0.250452, 74.421 )
+
+[node name="Plane_tree_537" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1395.17, 0.250452, 77.0958 )
+
+[node name="Plane_tree_538" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1376.34, 0.250452, 78.4912 )
+
+[node name="Plane_tree_539" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1415.89, 0.250452, 89.6056 )
+
+[node name="Plane_tree_540" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1409.24, 0.250452, 72.6032 )
+
+[node name="Plane_tree_541" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1446.06, 0.250452, 75.2779 )
+
+[node name="Plane_tree_542" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1427.23, 0.250452, 76.6733 )
+
+[node name="Plane_tree_543" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1549.16, 0.250452, 106.461 )
+
+[node name="Plane_tree_544" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1585.99, 0.250452, 109.136 )
+
+[node name="Plane_tree_545" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1567.16, 0.250452, 110.531 )
+
+[node name="Plane_tree_546" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1606.71, 0.250452, 121.645 )
+
+[node name="Plane_tree_547" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1600.06, 0.250452, 104.643 )
+
+[node name="Plane_tree_548" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1636.89, 0.250452, 107.318 )
+
+[node name="Plane_tree_549" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1618.05, 0.250452, 108.713 )
+
+[node name="Plane_tree_550" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1489.45, 0.250452, 95.0963 )
+
+[node name="Plane_tree_551" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1482.8, 0.250452, 78.0938 )
+
+[node name="Plane_tree_552" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1519.63, 0.250452, 80.7686 )
+
+[node name="Plane_tree_553" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1500.8, 0.250452, 82.1639 )
+
+[node name="Plane_tree_554" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1540.35, 0.250452, 93.2784 )
+
+[node name="Plane_tree_555" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1533.7, 0.250452, 76.2759 )
+
+[node name="Plane_tree_556" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1570.53, 0.250452, 78.9506 )
+
+[node name="Plane_tree_557" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1551.69, 0.250452, 80.346 )
+
+[node name="Plane_tree_558" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1670.53, 0.250452, 104.501 )
+
+[node name="Plane_tree_559" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1707.36, 0.250452, 107.176 )
+
+[node name="Plane_tree_560" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1688.53, 0.250452, 108.571 )
+
+[node name="Plane_tree_561" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1728.08, 0.250452, 119.686 )
+
+[node name="Plane_tree_562" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1721.43, 0.250452, 102.683 )
+
+[node name="Plane_tree_563" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1758.26, 0.250452, 105.358 )
+
+[node name="Plane_tree_564" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1739.42, 0.250452, 106.754 )
+
+[node name="Plane_tree_565" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1610.82, 0.250452, 93.1366 )
+
+[node name="Plane_tree_566" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1604.17, 0.250452, 76.1341 )
+
+[node name="Plane_tree_567" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1641, 0.250452, 78.8089 )
+
+[node name="Plane_tree_568" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1622.17, 0.250452, 80.2043 )
+
+[node name="Plane_tree_569" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1661.72, 0.250452, 91.3187 )
+
+[node name="Plane_tree_570" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1655.07, 0.250452, 74.3163 )
+
+[node name="Plane_tree_571" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1691.9, 0.250452, 76.991 )
+
+[node name="Plane_tree_572" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.461563, 0, 0.887107, 0, 1, 0, -0.887107, 0, 0.461563, 1673.06, 0.250452, 78.3864 )
+
+[node name="Plane_tree_573" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1801, 0.250452, 85.657 )
+
+[node name="Plane_tree_574" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1837.34, 0.250452, 79.0958 )
+
+[node name="Plane_tree_575" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1819.45, 0.250452, 85.1277 )
+
+[node name="Plane_tree_576" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1860.52, 0.250452, 86.0635 )
+
+[node name="Plane_tree_577" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1849.85, 0.250452, 71.2473 )
+
+[node name="Plane_tree_578" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1886.19, 0.250452, 64.6861 )
+
+[node name="Plane_tree_579" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1868.29, 0.250452, 70.7179 )
+
+[node name="Plane_tree_580" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1740.35, 0.250452, 89.4878 )
+
+[node name="Plane_tree_581" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1729.68, 0.250452, 74.6716 )
+
+[node name="Plane_tree_582" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1766.01, 0.250452, 68.1104 )
+
+[node name="Plane_tree_583" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1748.12, 0.250452, 74.1421 )
+
+[node name="Plane_tree_584" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1789.19, 0.250452, 75.0779 )
+
+[node name="Plane_tree_585" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1778.53, 0.250452, 60.2618 )
+
+[node name="Plane_tree_586" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1814.86, 0.250452, 53.7005 )
+
+[node name="Plane_tree_587" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1796.97, 0.250452, 59.7324 )
+
+[node name="Plane_tree_588" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1918.08, 0.250452, 53.5959 )
+
+[node name="Plane_tree_589" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1954.42, 0.250452, 47.0346 )
+
+[node name="Plane_tree_590" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1936.52, 0.250452, 53.0665 )
+
+[node name="Plane_tree_591" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1977.6, 0.250452, 54.0023 )
+
+[node name="Plane_tree_592" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1966.93, 0.250452, 39.1862 )
+
+[node name="Plane_tree_593" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2003.26, 0.250452, 32.6248 )
+
+[node name="Plane_tree_594" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1985.37, 0.250452, 38.6567 )
+
+[node name="Plane_tree_595" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1857.42, 0.250452, 57.4266 )
+
+[node name="Plane_tree_596" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1846.75, 0.250452, 42.6104 )
+
+[node name="Plane_tree_597" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1883.09, 0.250452, 36.0491 )
+
+[node name="Plane_tree_598" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1865.19, 0.250452, 42.0809 )
+
+[node name="Plane_tree_599" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1906.27, 0.250452, 43.0168 )
+
+[node name="Plane_tree_600" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1895.6, 0.250452, 28.2006 )
+
+[node name="Plane_tree_601" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1931.94, 0.250452, 21.6393 )
+
+[node name="Plane_tree_602" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1914.04, 0.250452, 27.6712 )
+
+[node name="Plane_tree_603" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1994.59, 0.250452, 84.8005 )
+
+[node name="Plane_tree_604" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2030.92, 0.250452, 78.2393 )
+
+[node name="Plane_tree_605" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2013.03, 0.250452, 84.2711 )
+
+[node name="Plane_tree_606" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2054.1, 0.250452, 85.2069 )
+
+[node name="Plane_tree_607" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2043.44, 0.250452, 70.3908 )
+
+[node name="Plane_tree_608" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2079.77, 0.250452, 63.8295 )
+
+[node name="Plane_tree_609" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2061.88, 0.250452, 69.8613 )
+
+[node name="Plane_tree_610" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1933.93, 0.250452, 88.6312 )
+
+[node name="Plane_tree_611" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1923.26, 0.250452, 73.815 )
+
+[node name="Plane_tree_612" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1959.6, 0.250452, 67.2538 )
+
+[node name="Plane_tree_613" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1941.7, 0.250452, 73.2856 )
+
+[node name="Plane_tree_614" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1982.78, 0.250452, 74.2214 )
+
+[node name="Plane_tree_615" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1972.11, 0.250452, 59.4053 )
+
+[node name="Plane_tree_616" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2008.44, 0.250452, 52.844 )
+
+[node name="Plane_tree_617" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 1990.55, 0.250452, 58.8758 )
+
+[node name="Plane_tree_618" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2111.66, 0.250452, 52.7393 )
+
+[node name="Plane_tree_619" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2148, 0.250452, 46.178 )
+
+[node name="Plane_tree_620" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2130.1, 0.250452, 52.2099 )
+
+[node name="Plane_tree_621" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2171.18, 0.250452, 53.1457 )
+
+[node name="Plane_tree_622" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2160.51, 0.250452, 38.3296 )
+
+[node name="Plane_tree_623" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2196.85, 0.250452, 31.7683 )
+
+[node name="Plane_tree_624" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2178.95, 0.250452, 37.8002 )
+
+[node name="Plane_tree_625" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2051, 0.250452, 56.57 )
+
+[node name="Plane_tree_626" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2040.34, 0.250452, 41.7538 )
+
+[node name="Plane_tree_627" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2076.67, 0.250452, 35.1926 )
+
+[node name="Plane_tree_628" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2058.78, 0.250452, 41.2244 )
+
+[node name="Plane_tree_629" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2099.85, 0.250452, 42.1603 )
+
+[node name="Plane_tree_630" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2089.18, 0.250452, 27.344 )
+
+[node name="Plane_tree_631" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2125.52, 0.250452, 20.7828 )
+
+[node name="Plane_tree_632" parent="Tree" instance=ExtResource( 4 )]
+transform = Transform( 0.226617, 0, 0.973984, 0, 1, 0, -0.973984, 0, 0.226617, 2107.62, 0.250452, 26.8146 )
+
+[node name="Plane_tree_pink_3" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 82.0309, -0.205456, -43.8263 )
+
+[node name="Plane_tree_pink_4" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 111.108, -0.205456, -37.7505 )
+
+[node name="Plane_tree_pink_5" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 205.113, -0.205456, -102.142 )
+
+[node name="Plane_tree_pink_6" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 269.85, -0.205456, -75.9725 )
+
+[node name="Plane_tree_pink_7" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 322.534, -0.205456, -113.506 )
+
+[node name="Plane_tree_pink_8" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 333.195, -0.205456, -195.802 )
+
+[node name="Plane_tree_pink_9" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 362.272, -0.205456, -189.726 )
+
+[node name="Plane_tree_pink_10" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 456.277, -0.205456, -254.118 )
+
+[node name="Plane_tree_pink_11" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 521.014, -0.205456, -227.948 )
+
+[node name="Plane_tree_pink_12" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 573.698, -0.205456, -265.481 )
+
+[node name="Plane_tree_pink_13" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1089.99, -0.205456, -226.074 )
+
+[node name="Plane_tree_pink_14" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1119.07, -0.205456, -219.998 )
+
+[node name="Plane_tree_pink_15" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1213.08, -0.205456, -284.39 )
+
+[node name="Plane_tree_pink_16" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1277.81, -0.205456, -258.22 )
+
+[node name="Plane_tree_pink_17" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1330.5, -0.205456, -295.753 )
+
+[node name="Plane_tree_pink_18" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1550.95, -0.205456, -168.282 )
+
+[node name="Plane_tree_pink_19" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1580.03, -0.205456, -162.206 )
+
+[node name="Plane_tree_pink_20" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1674.04, -0.205456, -226.598 )
+
+[node name="Plane_tree_pink_21" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1738.77, -0.205456, -200.428 )
+
+[node name="Plane_tree_pink_22" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1791.46, -0.205456, -237.961 )
+
+[node name="Plane_tree_pink_23" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1830.28, -0.205456, -172.41 )
+
+[node name="Plane_tree_pink_24" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1859.36, -0.205456, -166.334 )
+
+[node name="Plane_tree_pink_25" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1953.36, -0.205456, -230.726 )
+
+[node name="Plane_tree_pink_26" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2018.1, -0.205456, -204.556 )
+
+[node name="Plane_tree_pink_27" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2070.78, -0.205456, -242.089 )
+
+[node name="Plane_tree_pink_28" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1676.92, -0.205456, 87.1233 )
+
+[node name="Plane_tree_pink_29" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1706, -0.205456, 93.1992 )
+
+[node name="Plane_tree_pink_30" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1800, -0.205456, 28.8072 )
+
+[node name="Plane_tree_pink_31" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1864.74, -0.205456, 54.9772 )
+
+[node name="Plane_tree_pink_32" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1917.42, -0.205456, 17.4439 )
+
+[node name="Plane_tree_pink_33" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 923.045, -0.205456, 41.2795 )
+
+[node name="Plane_tree_pink_34" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 952.122, -0.205456, 47.3553 )
+
+[node name="Plane_tree_pink_35" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1046.13, -0.205456, -17.0367 )
+
+[node name="Plane_tree_pink_36" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1110.86, -0.205456, 9.13333 )
+
+[node name="Plane_tree_pink_37" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1163.55, -0.205456, -28.3999 )
+
+[node name="Plane_tree_pink_38" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 441.685, -0.205456, 130.42 )
+
+[node name="Plane_tree_pink_39" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 470.762, -0.205456, 136.496 )
+
+[node name="Plane_tree_pink_40" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 564.768, -0.205456, 72.1041 )
+
+[node name="Plane_tree_pink_41" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 629.504, -0.205456, 98.2741 )
+
+[node name="Plane_tree_pink_42" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 682.188, -0.205456, 60.7408 )
+
+[node name="Plane_tree_pink_43" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 85.1223, -0.205456, 140.608 )
+
+[node name="Plane_tree_pink_44" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 114.199, -0.205456, 146.684 )
+
+[node name="Plane_tree_pink_45" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 208.205, -0.205456, 82.2916 )
+
+[node name="Plane_tree_pink_46" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 272.941, -0.205456, 108.462 )
+
+[node name="Plane_tree_pink_47" parent="Tree" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 325.625, -0.205456, 70.9283 )
+
+[node name="House" type="Spatial" parent="."]
+
+[connection signal="body_entered" from="stages/INICIO/Salida" to="." method="_on_Salida_body_entered"]
+[connection signal="body_entered" from="stages/LLEGADA/Llegada" to="." method="_on_Llegada_body_entered"]

@@ -1,0 +1,738 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Menu_1.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Exit_yes_pressed.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Texto_legal.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Play_over.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Play.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Play_press.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Exit_Over.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Exit_No_presssed.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Exit_press.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Exit.png" type="Texture" id=10]
+[ext_resource path="res://scenes/Menu/Code/Menu.gd" type="Script" id=11]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Salir_si.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/exit_yes_over.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Texto_pregunta_salit.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Exit_No.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Title.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Exit_No_over.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Sounds/Acepts/yes_Menu.mp3" type="AudioStream" id=18]
+[ext_resource path="res://Assets/Sounds/Acepts/Hover_.mp3" type="AudioStream" id=19]
+[ext_resource path="res://Assets/Sounds/Colin McRae Rally 1998  Main Theme.mp3" type="AudioStream" id=20]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Ajustesyextras.normal.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/creditosextras_hover.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Ajustesyextras.press.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Font/Arial/Arialn.ttf" type="DynamicFontData" id=24]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Navegacion/Salir.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Navegacion/salir_over.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Font/Arial/ARIBL0.ttf" type="DynamicFontData" id=27]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Exit"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Buttons_Titles/Container_buttons:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0.5, 2 ),
+"update": 0,
+"values": [ Vector2( 131, 390 ), Vector2( -424, 390 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Buttons_Titles/Title:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.05, 0.15 ),
+"transitions": PoolRealArray( 0.5, 2 ),
+"update": 0,
+"values": [ Vector2( 134, 165 ), Vector2( -550, 165 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Buttons_Titles/TextureRect:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.05, 0.15 ),
+"transitions": PoolRealArray( 0.5, 2 ),
+"update": 0,
+"values": [ Vector2( 114, 718 ), Vector2( -900, 718 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Exit/Node2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.15, 0.2 ),
+"transitions": PoolRealArray( 2, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -700 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Buttons_Titles/Container_buttons:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 131, 390 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Buttons_Titles/Title:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 134, 165 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Buttons_Titles/TextureRect:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 114, 718 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Exit/Node2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Exit_levels"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Buttons_Titles/Container_buttons:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.2 ),
+"transitions": PoolRealArray( 2, 0.5 ),
+"update": 0,
+"values": [ Vector2( -500, 390 ), Vector2( 131, 390 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Buttons_Titles/Title:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.05, 0.15 ),
+"transitions": PoolRealArray( 2, 0.5 ),
+"update": 0,
+"values": [ Vector2( -550, 165 ), Vector2( 134, 165 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Buttons_Titles/TextureRect:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.05, 0.15 ),
+"transitions": PoolRealArray( 2, 0.5 ),
+"update": 0,
+"values": [ Vector2( -1000, 718 ), Vector2( 114, 718 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Play"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Buttons_Titles/Container_buttons:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0.5, 2 ),
+"update": 0,
+"values": [ Vector2( 131, 390 ), Vector2( -500, 390 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Buttons_Titles/Title:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.05, 0.15 ),
+"transitions": PoolRealArray( 0.5, 2 ),
+"update": 0,
+"values": [ Vector2( 134, 165 ), Vector2( -550, 165 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Buttons_Titles/TextureRect:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.05, 0.15 ),
+"transitions": PoolRealArray( 0.5, 2 ),
+"update": 0,
+"values": [ Vector2( 114, 718 ), Vector2( -900, 718 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Buttons_Titles/Container_buttons:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -500, 390 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Buttons_Titles/TextureRect:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1000, 718 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Intro_exit"
+length = 0.23
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Telon:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.08, 0.19 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0.0117647 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Telon:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.19, 0.2, 0.23 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Telon:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.00999262 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Telon:margin_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1086.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Telon:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+use_filter = true
+font_data = ExtResource( 24 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 40
+use_filter = true
+font_data = ExtResource( 27 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 30
+use_filter = true
+font_data = ExtResource( 24 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 30
+use_filter = true
+font_data = ExtResource( 24 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 30
+use_filter = true
+font_data = ExtResource( 24 )
+
+[node name="Control" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -541.0
+margin_right = 960.0
+margin_bottom = 539.0
+script = ExtResource( 11 )
+
+[node name="Fondo_1" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
+texture = ExtResource( 1 )
+
+[node name="Buttons_Titles" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Title" type="TextureRect" parent="Buttons_Titles"]
+modulate = Color( 0.745098, 0.745098, 0.745098, 1 )
+margin_left = 134.0
+margin_top = 165.0
+margin_right = 1045.0
+margin_bottom = 399.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 16 )
+
+[node name="Container_buttons" type="VBoxContainer" parent="Buttons_Titles"]
+anchor_top = 0.089
+anchor_bottom = 0.089
+margin_left = -500.0
+margin_top = 293.88
+margin_right = 24.0
+margin_bottom = 591.88
+grow_horizontal = 0
+grow_vertical = 0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_constants/separation = 37
+
+[node name="Play" type="TextureButton" parent="Buttons_Titles/Container_buttons"]
+margin_right = 524.0
+margin_bottom = 50.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 4 )
+
+[node name="Exit" type="TextureButton" parent="Buttons_Titles/Container_buttons"]
+margin_top = 87.0
+margin_right = 524.0
+margin_bottom = 127.0
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 7 )
+
+[node name="Credits" type="TextureButton" parent="Buttons_Titles/Container_buttons"]
+margin_top = 164.0
+margin_right = 524.0
+margin_bottom = 212.0
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 22 )
+
+[node name="TextureRect" type="TextureRect" parent="Buttons_Titles"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -1000.0
+margin_top = 178.0
+margin_right = -253.0
+margin_bottom = 283.0
+rect_scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 3 )
+
+[node name="Animations_" type="Node2D" parent="."]
+
+[node name="Exit" type="AnimationPlayer" parent="Animations_"]
+anims/Exit = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="Play" type="AnimationPlayer" parent="Animations_"]
+anims/Exit_levels = SubResource( 4 )
+anims/Play = SubResource( 3 )
+anims/RESET = SubResource( 12 )
+
+[node name="Exit" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1920.0
+margin_bottom = -1080.0
+
+[node name="Node2D" type="Node2D" parent="Exit"]
+
+[node name="Pregunta" type="TextureRect" parent="Exit/Node2D"]
+margin_left = 194.0
+margin_top = 1095.0
+margin_right = 727.0
+margin_bottom = 1146.0
+texture = ExtResource( 14 )
+
+[node name="yes" type="TextureButton" parent="Exit/Node2D"]
+margin_left = 310.0
+margin_top = 1188.0
+margin_right = 354.0
+margin_bottom = 1228.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 13 )
+
+[node name="No" type="TextureButton" parent="Exit/Node2D"]
+margin_left = 504.0
+margin_top = 1184.0
+margin_right = 571.0
+margin_bottom = 1224.0
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 17 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Acept" type="AudioStreamPlayer" parent="Node2D"]
+stream = ExtResource( 18 )
+
+[node name="Hover" type="AudioStreamPlayer" parent="Node2D"]
+stream = ExtResource( 19 )
+
+[node name="Telon" type="ColorRect" parent="."]
+margin_left = -6.0
+margin_top = -6.0
+margin_right = 1936.0
+margin_bottom = 1086.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+color = Color( 0, 0, 0, 0.00999262 )
+
+[node name="cortina" type="AnimationPlayer" parent="."]
+autoplay = "Intro_exit"
+anims/Intro_exit = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
+
+[node name="Ajustesyextras" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 754.096, 540 )
+
+[node name="ColorRect" type="ColorRect" parent="Ajustesyextras"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0.209717, 0 )
+color = Color( 0, 0.0431373, 0.0313726, 0.768627 )
+
+[node name="exit_Ajustes" type="TextureButton" parent="Ajustesyextras"]
+margin_left = 24.0
+margin_top = 22.0
+margin_right = 64.0
+margin_bottom = 62.0
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 25 )
+texture_hover = ExtResource( 26 )
+
+[node name="Creditos" type="RichTextLabel" parent="Ajustesyextras"]
+margin_left = 123.0
+margin_top = 164.0
+margin_right = 969.0
+margin_bottom = 1005.0
+custom_fonts/normal_font = SubResource( 7 )
+bbcode_enabled = true
+bbcode_text = "[center]Queridos creadores y colaboradores[/center]
+
+Quisiera expresar mi sincero agradecimiento a todos aquellos cuyos brillantes contenidos han sido mi fuente de inspiración y guía en el apasionante viaje de la creación del presente  videojuego. 
+
+
+
+
+         								[center]Programadores[/center]
+		
+										[center] Jro [/center]
+										[center]  Andrés Avellaneda [/center]
+										[center]  Artistas  [/center]
+										[center]  Jro  [/center]
+										[center]  Andrés Avellaneda [/center]
+										
+										[center]  RCC  Desing  [/center]
+										
+										[center]  Sonido [/center]
+										[center] Jro  [/center]
+				
+					
+Gracias a todos...
+
+					
+"
+text = "Queridos creadores y colaboradores
+
+Quisiera expresar mi sincero agradecimiento a todos aquellos cuyos brillantes contenidos han sido mi fuente de inspiración y guía en el apasionante viaje de la creación del presente  videojuego. 
+
+
+
+
+         								Programadores
+		
+										 Jro 
+										  Andrés Avellaneda 
+										  Artistas  
+										  Jro  
+										  Andrés Avellaneda 
+										
+										  RCC  Desing  
+										
+										  Sonido 
+										 Jro  
+				
+					
+Gracias a todos...
+
+					
+"
+
+[node name="Ajustes" type="Control" parent="Ajustesyextras"]
+margin_left = 1004.0
+margin_top = 115.0
+margin_right = 1867.0
+margin_bottom = 935.0
+
+[node name="titulo" type="Label" parent="Ajustesyextras/Ajustes"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 10 )
+text = "Ajustes:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Ajustesyextras/Ajustes"]
+margin_top = 72.0
+margin_right = 867.0
+margin_bottom = 822.0
+custom_constants/separation = 50
+
+[node name="sonido" type="HBoxContainer" parent="Ajustesyextras/Ajustes/VBoxContainer"]
+margin_right = 867.0
+margin_bottom = 36.0
+
+[node name="Sonido_musica" type="Label" parent="Ajustesyextras/Ajustes/VBoxContainer/sonido"]
+margin_right = 169.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 11 )
+text = "Sonido musica:"
+
+[node name="HSlider" type="HSlider" parent="Ajustesyextras/Ajustes/VBoxContainer/sonido/Sonido_musica"]
+margin_left = 231.0
+margin_top = 13.0
+margin_right = 628.0
+margin_bottom = 29.0
+rect_pivot_offset = Vector2( -0.0961914, 0 )
+value = 70.0
+
+[node name="porcentaje" type="Label" parent="Ajustesyextras/Ajustes/VBoxContainer/sonido/Sonido_musica/HSlider"]
+margin_left = 410.904
+margin_top = -11.0
+margin_right = 460.904
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 13 )
+text = "70%"
+
+[node name="shadow" type="HBoxContainer" parent="Ajustesyextras/Ajustes/VBoxContainer"]
+margin_top = 86.0
+margin_right = 867.0
+margin_bottom = 128.0
+custom_constants/separation = 100
+
+[node name="shadows" type="Label" parent="Ajustesyextras/Ajustes/VBoxContainer/shadow"]
+margin_top = 3.0
+margin_right = 221.0
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 11 )
+text = "Mapeo de sombras:"
+
+[node name="si" type="Button" parent="Ajustesyextras/Ajustes/VBoxContainer/shadow"]
+margin_left = 321.0
+margin_right = 440.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 14 )
+toggle_mode = true
+pressed = true
+text = " Activado "
+
+[node name="no" type="Button" parent="Ajustesyextras/Ajustes/VBoxContainer/shadow"]
+margin_left = 540.0
+margin_right = 702.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 14 )
+toggle_mode = true
+text = " Desactivado "
+
+[node name="MSAA" type="HBoxContainer" parent="Ajustesyextras/Ajustes/VBoxContainer"]
+margin_top = 178.0
+margin_right = 867.0
+margin_bottom = 220.0
+custom_constants/separation = 100
+
+[node name="Antialiasing" type="Label" parent="Ajustesyextras/Ajustes/VBoxContainer/MSAA"]
+margin_top = 3.0
+margin_right = 224.0
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 11 )
+text = "Antialiasing (MSAA):"
+
+[node name="x4" type="Button" parent="Ajustesyextras/Ajustes/VBoxContainer/MSAA"]
+margin_left = 324.0
+margin_right = 404.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 14 )
+toggle_mode = true
+text = "   4x   "
+
+[node name="x2" type="Button" parent="Ajustesyextras/Ajustes/VBoxContainer/MSAA"]
+margin_left = 504.0
+margin_right = 584.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 14 )
+toggle_mode = true
+pressed = true
+text = "   2x   "
+
+[node name="disable" type="Button" parent="Ajustesyextras/Ajustes/VBoxContainer/MSAA"]
+margin_left = 684.0
+margin_right = 832.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 14 )
+toggle_mode = true
+text = "Desactivado"
+
+[node name="FXAA" type="HBoxContainer" parent="Ajustesyextras/Ajustes/VBoxContainer"]
+margin_top = 270.0
+margin_right = 867.0
+margin_bottom = 312.0
+custom_constants/separation = 100
+
+[node name="Antialiasing" type="Label" parent="Ajustesyextras/Ajustes/VBoxContainer/FXAA"]
+margin_top = 3.0
+margin_right = 218.0
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 11 )
+text = "Antialiasing (FXAA):"
+
+[node name="si" type="Button" parent="Ajustesyextras/Ajustes/VBoxContainer/FXAA"]
+margin_left = 318.0
+margin_right = 437.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 14 )
+toggle_mode = true
+text = " Activado "
+
+[node name="no" type="Button" parent="Ajustesyextras/Ajustes/VBoxContainer/FXAA"]
+margin_left = 537.0
+margin_right = 699.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 14 )
+toggle_mode = true
+pressed = true
+text = " Desactivado "
+
+[node name="Aplicar-" type="HBoxContainer" parent="Ajustesyextras/Ajustes/VBoxContainer"]
+margin_top = 362.0
+margin_right = 867.0
+margin_bottom = 404.0
+custom_constants/separation = 10
+
+[node name="si" type="Button" parent="Ajustesyextras/Ajustes/VBoxContainer/Aplicar-"]
+margin_right = 428.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 14 )
+text = "                     Aplicar                            "
+
+[node name="no" type="Button" parent="Ajustesyextras/Ajustes/VBoxContainer/Aplicar-"]
+margin_left = 438.0
+margin_right = 836.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 14 )
+text = "                    Cancelar                     "
+
+[connection signal="mouse_entered" from="Buttons_Titles/Container_buttons/Play" to="." method="_on_Play_mouse_entered"]
+[connection signal="pressed" from="Buttons_Titles/Container_buttons/Play" to="." method="_on_Play_pressed"]
+[connection signal="mouse_entered" from="Buttons_Titles/Container_buttons/Exit" to="." method="_on_Exit_mouse_entered"]
+[connection signal="pressed" from="Buttons_Titles/Container_buttons/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="toggled" from="Buttons_Titles/Container_buttons/Exit" to="." method="_on_Exit_toggled"]
+[connection signal="mouse_entered" from="Buttons_Titles/Container_buttons/Credits" to="." method="_on_Credits_mouse_entered"]
+[connection signal="pressed" from="Buttons_Titles/Container_buttons/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="animation_finished" from="Animations_/Play" to="." method="_on_Play_animation_finished"]
+[connection signal="mouse_entered" from="Exit/Node2D/yes" to="." method="_on_yes_mouse_entered"]
+[connection signal="pressed" from="Exit/Node2D/yes" to="." method="_on_yes_pressed"]
+[connection signal="mouse_entered" from="Exit/Node2D/No" to="." method="_on_No_mouse_entered"]
+[connection signal="pressed" from="Exit/Node2D/No" to="." method="_on_No_pressed"]
+[connection signal="mouse_entered" from="Ajustesyextras/exit_Ajustes" to="." method="_on_exit_Ajustes_mouse_entered"]
+[connection signal="pressed" from="Ajustesyextras/exit_Ajustes" to="." method="_on_exit_Ajustes_pressed"]

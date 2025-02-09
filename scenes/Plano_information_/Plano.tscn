@@ -1,0 +1,726 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Assets/Font/ghaitsa_2/Ghaitsa.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Textures/Interfaz de usuario/Navegacion/Buttons_options_normal.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Plano_information_/Scripts/Plano.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Font/Arial/Arialn.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 250
+outline_color = Color( 1, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0.480969 )
+colors = PoolColorArray( 1, 1, 1, 1 )
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0.564014 )
+colors = PoolColorArray( 1, 1, 1, 1 )
+
+[sub_resource type="SphereMesh" id=2]
+radius = 8.0
+height = 16.0
+
+[sub_resource type="DynamicFont" id=3]
+size = 25
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="SphereMesh" id=4]
+radius = 8.0
+height = 16.0
+
+[sub_resource type="Animation" id=7]
+resource_name = "Bunce_p"
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Origen/P_Inicio:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 2, 0.5 ),
+"update": 0,
+"values": [ Vector2( 1.3, 1.3 ), Vector2( 1.5, 1.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Origen/P_Llegada:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.5, 2 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 1.3, 1.3 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Origen/P_Inicio:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Origen/P_Llegada:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[node name="Plano" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 912.0
+margin_top = 537.0
+script = ExtResource( 3 )
+
+[node name="Plano" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0.313726 )
+
+[node name="Origen" type="Position2D" parent="Plano"]
+
+[node name="Rect_X" type="ColorRect" parent="Plano/Origen"]
+margin_left = -912.0
+margin_top = -1.0
+margin_right = 1008.0
+margin_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Rect_X2" type="ColorRect" parent="Plano/Origen"]
+margin_top = 543.0
+margin_right = 1080.0
+margin_bottom = 544.0
+rect_rotation = -90.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="X" type="HBoxContainer" parent="Plano/Origen"]
+margin_left = -1088.0
+margin_top = -4.0
+margin_right = 20682.0
+margin_bottom = 76.0
+rect_scale = Vector2( 0.1, 0.1 )
+custom_constants/separation = 918
+alignment = 1
+
+[node name="Uni_" type="TextureRect" parent="Plano/Origen/X"]
+margin_left = 2380.0
+margin_right = 2866.0
+margin_bottom = 103.0
+texture = ExtResource( 2 )
+
+[node name="Uni_2" type="TextureRect" parent="Plano/Origen/X"]
+margin_left = 3784.0
+margin_right = 3784.0
+margin_bottom = 103.0
+rect_pivot_offset = Vector2( -2613, 70 )
+
+[node name="text" type="Label" parent="Plano/Origen/X/Uni_2"]
+visible = false
+margin_left = -45.0
+margin_top = 80.0
+margin_right = 118.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "-900"
+
+[node name="Uni_3" type="TextureRect" parent="Plano/Origen/X"]
+margin_left = 4702.0
+margin_right = 4702.0
+margin_bottom = 103.0
+
+[node name="text" type="Label" parent="Plano/Origen/X/Uni_3"]
+visible = false
+margin_left = -45.0
+margin_top = 80.0
+margin_right = 118.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "-800"
+
+[node name="Uni_4" type="TextureRect" parent="Plano/Origen/X"]
+margin_left = 5620.0
+margin_right = 5620.0
+margin_bottom = 103.0
+
+[node name="text" type="Label" parent="Plano/Origen/X/Uni_4"]
+visible = false
+margin_left = -45.0
+margin_top = 80.0
+margin_right = 118.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "-700"
+
+[node name="Uni_5" type="TextureRect" parent="Plano/Origen/X"]
+margin_left = 6538.0
+margin_right = 6538.0
+margin_bottom = 103.0
+
+[node name="text" type="Label" parent="Plano/Origen/X/Uni_5"]
+visible = false
+margin_left = -45.0
+margin_top = 80.0
+margin_right = 118.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "-600"
+
+[node name="Uni_6" type="TextureRect" parent="Plano/Origen/X"]
+margin_left = 7456.0
+margin_right = 7456.0
+margin_bottom = 103.0
+
+[node name="text" type="Label" parent="Plano/Origen/X/Uni_6"]
+visible = false
+margin_left = -45.0
+margin_top = 80.0
+margin_right = 118.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "-500"
+
+[node name="Uni_7" type="TextureRect" parent="Plano/Origen/X"]
+margin_left = 8374.0
+margin_right = 8374.0
+margin_bottom = 103.0
+
+[node name="text" type="Label" parent="Plano/Origen/X/Uni_7"]
+visible = false
+margin_left = -45.0
+margin_top = 80.0
+margin_right = 118.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "-400"
+
+[node name="Uni_8" type="TextureRect" parent="Plano/Origen/X"]
+margin_left = 9292.0
+margin_right = 9292.0
+margin_bottom = 103.0
+
+[node name="text" type="Label" parent="Plano/Origen/X/Uni_8"]
+visible = false
+margin_left = -45.0
+margin_top = 80.0
+margin_right = 118.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "-300"
+
+[node name="Uni_9" type="TextureRect" parent="Plano/Origen/X"]
+margin_left = 10210.0
+margin_right = 10210.0
+margin_bottom = 103.0
+
+[node name="text" type="Label" parent="Plano/Origen/X/Uni_9"]
+visible = false
+margin_left = -45.0
+margin_top = 80.0
+margin_right = 118.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "-200
+"
+
+[node name="Uni_10" type="TextureRect" parent="Plano/Origen/X"]
+margin_left = 11128.0
+margin_right = 11128.0
+margin_bottom = 103.0
+
+[node name="text" type="Label" parent="Plano/Origen/X/Uni_10"]
+visible = false
+margin_left = -45.0
+margin_top = 80.0
+margin_right = 118.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "-100"
+
+[node name="Uni_11" type="TextureRect" parent="Plano/Origen/X"]
+margin_left = 12046.0
+margin_right = 12046.0
+margin_bottom = 103.0
+
+[node name="text" type="Label" parent="Plano/Origen/X/Uni_11"]
+visible = false
+margin_left = -45.0
+margin_top = 80.0
+margin_right = 118.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "0"
+
+[node name="Uni_12" type="TextureRect" parent="Plano/Origen/X"]
+margin_left = 12964.0
+margin_right = 12964.0
+margin_bottom = 103.0
+
+[node name="text" type="Label" parent="Plano/Origen/X/Uni_12"]
+visible = false
+margin_left = -123.0
+margin_top = 80.0
+margin_right = 277.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "100"
+
+[node name="Uni_13" type="TextureRect" parent="Plano/Origen/X"]
+margin_left = 13882.0
+margin_right = 13882.0
+margin_bottom = 103.0
+
+[node name="text" type="Label" parent="Plano/Origen/X/Uni_13"]
+visible = false
+margin_left = -111.0
+margin_top = 80.0
+margin_right = 289.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "200"
+
+[node name="Uni_14" type="TextureRect" parent="Plano/Origen/X"]
+margin_left = 14800.0
+margin_right = 14800.0
+margin_bottom = 103.0
+rect_pivot_offset = Vector2( -5909, 320 )
+
+[node name="text" type="Label" parent="Plano/Origen/X/Uni_14"]
+visible = false
+margin_left = -111.0
+margin_top = 80.0
+margin_right = 289.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "300"
+
+[node name="Uni_15" type="TextureRect" parent="Plano/Origen/X"]
+margin_left = 15718.0
+margin_right = 15718.0
+margin_bottom = 103.0
+
+[node name="text" type="Label" parent="Plano/Origen/X/Uni_15"]
+visible = false
+margin_left = -111.0
+margin_top = 80.0
+margin_right = 289.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "400"
+
+[node name="Uni_16" type="TextureRect" parent="Plano/Origen/X"]
+margin_left = 16636.0
+margin_right = 16636.0
+margin_bottom = 103.0
+
+[node name="text" type="Label" parent="Plano/Origen/X/Uni_16"]
+visible = false
+margin_left = -111.0
+margin_top = 80.0
+margin_right = 289.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "500"
+
+[node name="Uni_17" type="TextureRect" parent="Plano/Origen/X"]
+margin_left = 17554.0
+margin_right = 17554.0
+margin_bottom = 103.0
+
+[node name="text" type="Label" parent="Plano/Origen/X/Uni_17"]
+visible = false
+margin_left = -111.0
+margin_top = 80.0
+margin_right = 289.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "600"
+
+[node name="Uni_18" type="TextureRect" parent="Plano/Origen/X"]
+margin_left = 18472.0
+margin_right = 18472.0
+margin_bottom = 103.0
+
+[node name="text" type="Label" parent="Plano/Origen/X/Uni_18"]
+visible = false
+margin_left = -111.0
+margin_top = 80.0
+margin_right = 289.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "700"
+
+[node name="Uni_19" type="TextureRect" parent="Plano/Origen/X"]
+margin_left = 19390.0
+margin_right = 19390.0
+margin_bottom = 103.0
+
+[node name="text" type="Label" parent="Plano/Origen/X/Uni_19"]
+visible = false
+margin_left = -111.0
+margin_top = 80.0
+margin_right = 289.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "800"
+
+[node name="Uni_20" type="TextureRect" parent="Plano/Origen/X"]
+visible = false
+margin_left = 20326.0
+margin_right = 20406.0
+margin_bottom = 80.0
+
+[node name="text" type="Label" parent="Plano/Origen/X/Uni_20"]
+visible = false
+margin_left = -111.0
+margin_top = 80.0
+margin_right = 289.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "900"
+
+[node name="Uni_21" type="TextureRect" parent="Plano/Origen/X"]
+visible = false
+margin_left = 20825.0
+margin_right = 20905.0
+margin_bottom = 80.0
+
+[node name="y" type="HBoxContainer" parent="Plano/Origen"]
+margin_left = 4.0
+margin_top = -1088.48
+margin_right = 21774.0
+margin_bottom = -1008.48
+rect_rotation = 90.0
+rect_scale = Vector2( 0.1, 0.1 )
+custom_constants/separation = 918
+alignment = 1
+
+[node name="Uni_" type="TextureRect" parent="Plano/Origen/y"]
+margin_left = 6754.0
+margin_right = 6754.0
+margin_bottom = 80.0
+
+[node name="Uni_2" type="TextureRect" parent="Plano/Origen/y"]
+margin_left = 7672.0
+margin_right = 7672.0
+margin_bottom = 80.0
+
+[node name="Uni_3" type="TextureRect" parent="Plano/Origen/y"]
+margin_left = 8590.0
+margin_right = 8590.0
+margin_bottom = 80.0
+
+[node name="Uni_4" type="TextureRect" parent="Plano/Origen/y"]
+margin_left = 9508.0
+margin_right = 9508.0
+margin_bottom = 80.0
+
+[node name="Uni_5" type="TextureRect" parent="Plano/Origen/y"]
+margin_left = 10426.0
+margin_right = 10426.0
+margin_bottom = 80.0
+
+[node name="Uni_6" type="TextureRect" parent="Plano/Origen/y"]
+margin_left = 11344.0
+margin_right = 11344.0
+margin_bottom = 80.0
+
+[node name="text" type="Label" parent="Plano/Origen/y/Uni_6"]
+visible = false
+margin_left = -110.0
+margin_top = 550.0
+margin_right = 370.0
+margin_bottom = 792.0
+rect_rotation = -90.0
+custom_colors/font_color = Color( 0.109804, 0.737255, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "500"
+
+[node name="Uni_7" type="TextureRect" parent="Plano/Origen/y"]
+margin_left = 12262.0
+margin_right = 12262.0
+margin_bottom = 80.0
+
+[node name="text" type="Label" parent="Plano/Origen/y/Uni_7"]
+visible = false
+margin_left = -110.0
+margin_top = 550.0
+margin_right = 370.0
+margin_bottom = 792.0
+rect_rotation = -90.0
+custom_colors/font_color = Color( 0.109804, 0.737255, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "400"
+
+[node name="Uni_8" type="TextureRect" parent="Plano/Origen/y"]
+margin_left = 13180.0
+margin_right = 13180.0
+margin_bottom = 80.0
+
+[node name="text" type="Label" parent="Plano/Origen/y/Uni_8"]
+visible = false
+margin_left = -110.0
+margin_top = 550.0
+margin_right = 370.0
+margin_bottom = 792.0
+rect_rotation = -90.0
+custom_colors/font_color = Color( 0.109804, 0.737255, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "300"
+
+[node name="Uni_9" type="TextureRect" parent="Plano/Origen/y"]
+margin_left = 14098.0
+margin_right = 14098.0
+margin_bottom = 80.0
+
+[node name="text" type="Label" parent="Plano/Origen/y/Uni_9"]
+visible = false
+margin_left = -110.0
+margin_top = 550.0
+margin_right = 370.0
+margin_bottom = 792.0
+rect_rotation = -90.0
+custom_colors/font_color = Color( 0.109804, 0.737255, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "200"
+
+[node name="Uni_10" type="TextureRect" parent="Plano/Origen/y"]
+margin_left = 15016.0
+margin_right = 15016.0
+margin_bottom = 80.0
+
+[node name="text" type="Label" parent="Plano/Origen/y/Uni_10"]
+visible = false
+margin_left = -110.0
+margin_top = 550.0
+margin_right = 370.0
+margin_bottom = 792.0
+rect_rotation = -90.0
+custom_colors/font_color = Color( 0.109804, 0.737255, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "100"
+
+[node name="Uni_11" type="TextureRect" parent="Plano/Origen/y"]
+visible = false
+margin_left = 15835.0
+margin_right = 15915.0
+margin_bottom = 80.0
+
+[node name="text" type="Label" parent="Plano/Origen/y/Uni_11"]
+margin_left = -110.0
+margin_top = 230.0
+margin_right = 60.0
+margin_bottom = 472.0
+rect_rotation = -90.0
+custom_colors/font_color = Color( 0.109804, 0.737255, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "0"
+
+[node name="Uni_12" type="TextureRect" parent="Plano/Origen/y"]
+visible = false
+margin_left = 16334.0
+margin_right = 16414.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 133.936, 4552.41 )
+
+[node name="text" type="Label" parent="Plano/Origen/y/Uni_12"]
+visible = false
+margin_left = -110.0
+margin_top = 540.0
+margin_right = 362.0
+margin_bottom = 782.0
+rect_rotation = -90.0
+custom_colors/font_color = Color( 0.109804, 0.737255, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "-100"
+
+[node name="Uni_13" type="TextureRect" parent="Plano/Origen/y"]
+visible = false
+margin_left = 16833.0
+margin_right = 16913.0
+margin_bottom = 80.0
+
+[node name="text" type="Label" parent="Plano/Origen/y/Uni_13"]
+visible = false
+margin_left = -110.0
+margin_top = 610.0
+margin_right = 415.0
+margin_bottom = 852.0
+rect_rotation = -90.0
+custom_colors/font_color = Color( 0.109804, 0.737255, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "-200"
+
+[node name="Uni_14" type="TextureRect" parent="Plano/Origen/y"]
+visible = false
+margin_left = 17332.0
+margin_right = 17412.0
+margin_bottom = 80.0
+
+[node name="text" type="Label" parent="Plano/Origen/y/Uni_14"]
+visible = false
+margin_left = -110.0
+margin_top = 610.0
+margin_right = 415.0
+margin_bottom = 852.0
+rect_rotation = -90.0
+custom_colors/font_color = Color( 0.109804, 0.737255, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "-300"
+
+[node name="Uni_15" type="TextureRect" parent="Plano/Origen/y"]
+visible = false
+margin_left = 17831.0
+margin_right = 17911.0
+margin_bottom = 80.0
+
+[node name="text" type="Label" parent="Plano/Origen/y/Uni_15"]
+visible = false
+margin_left = -110.0
+margin_top = 610.0
+margin_right = 415.0
+margin_bottom = 852.0
+rect_rotation = -90.0
+custom_colors/font_color = Color( 0.109804, 0.737255, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "-400"
+
+[node name="Uni_16" type="TextureRect" parent="Plano/Origen/y"]
+visible = false
+margin_left = 18330.0
+margin_right = 18410.0
+margin_bottom = 80.0
+
+[node name="text" type="Label" parent="Plano/Origen/y/Uni_16"]
+visible = false
+margin_left = -110.0
+margin_top = 610.0
+margin_right = 415.0
+margin_bottom = 852.0
+rect_rotation = -90.0
+custom_colors/font_color = Color( 0.109804, 0.737255, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "-500"
+
+[node name="Uni_17" type="TextureRect" parent="Plano/Origen/y"]
+visible = false
+margin_left = 16833.0
+margin_right = 16913.0
+margin_bottom = 80.0
+texture = ExtResource( 2 )
+
+[node name="Uni_18" type="TextureRect" parent="Plano/Origen/y"]
+visible = false
+margin_left = 17332.0
+margin_right = 17412.0
+margin_bottom = 80.0
+texture = ExtResource( 2 )
+
+[node name="Uni_19" type="TextureRect" parent="Plano/Origen/y"]
+visible = false
+margin_left = 17831.0
+margin_right = 17911.0
+margin_bottom = 80.0
+texture = ExtResource( 2 )
+
+[node name="Uni_20" type="TextureRect" parent="Plano/Origen/y"]
+visible = false
+margin_left = 18829.0
+margin_right = 18909.0
+margin_bottom = 80.0
+texture = ExtResource( 2 )
+
+[node name="Uni_21" type="TextureRect" parent="Plano/Origen/y"]
+visible = false
+margin_left = 19328.0
+margin_right = 19408.0
+margin_bottom = 80.0
+texture = ExtResource( 2 )
+
+[node name="Lines" type="Control" parent="."]
+
+[node name="Line_funtion" type="Line2D" parent="Lines"]
+visible = false
+modulate = Color( 1, 1, 1, 0.243137 )
+width = 3.0
+default_color = Color( 0.235294, 0.235294, 0.235294, 1 )
+gradient = SubResource( 6 )
+
+[node name="Line_2puntos" type="Line2D" parent="Lines"]
+width = 3.5
+default_color = Color( 0, 0.164706, 1, 1 )
+gradient = SubResource( 5 )
+sharp_limit = 4.0
+round_precision = 16
+
+[node name="Puntos" type="Control" parent="."]
+
+[node name="Origen" type="Position2D" parent="Puntos"]
+
+[node name="P_Inicio" type="MeshInstance2D" parent="Puntos/Origen"]
+modulate = Color( 1, 0, 0, 1 )
+mesh = SubResource( 2 )
+
+[node name="Label" type="Label" parent="Puntos/Origen/P_Inicio"]
+margin_left = -57.0
+margin_top = -32.0
+margin_right = 1.0
+margin_bottom = -7.0
+custom_fonts/font = SubResource( 3 )
+text = "Inicio()"
+
+[node name="P_Llegada" type="MeshInstance2D" parent="Puntos/Origen"]
+modulate = Color( 0, 0.133333, 1, 1 )
+mesh = SubResource( 4 )
+
+[node name="Label" type="Label" parent="Puntos/Origen/P_Llegada"]
+margin_left = -77.0
+margin_top = -32.0
+margin_right = 59.0
+margin_bottom = -7.0
+custom_fonts/font = SubResource( 3 )
+text = "Llegada()"
+
+[node name="Bunce" type="AnimationPlayer" parent="Puntos"]
+autoplay = "Bunce_p"
+anims/Bunce_p = SubResource( 7 )
+anims/RESET = SubResource( 8 )
